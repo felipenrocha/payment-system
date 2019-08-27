@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+
+1566577698 /home/felipenrocha/dev/tp1/trab1/trab1/codigo.hpp
+	"string.h"
+
+1566920616 source:/home/felipenrocha/dev/tp1/trab1/trab1/main.cpp
+	<iostream>
+	"usuario.cpp"
+
+1566920954 /home/felipenrocha/dev/tp1/trab1/trab1/usuario.hpp
+	<string>
+
+1566921112 /home/felipenrocha/dev/tp1/trab1/trab1/usuario.cpp
+	"usuario.hpp"
+	<iostream>
+	<string>
+
