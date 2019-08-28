@@ -6,30 +6,27 @@ using namespace std;
 Usuario cadastraUsuario()
 {
     bool flag = true;
-    while (flag)
+
+    string cpf, password;
+    cout << "Informe o CPF do usuario: " << endl
+         << "Exemplo: 025.335.231-27 ou 02533523127" << endl
+         << endl;
+    cout << "CPF: ";
+    cin >> cpf;
+    cout << "Informe a senha do novo usuário: " << endl
+         << "Obs.: A senha deve conter letras maiusculas minusculas e numeros." << endl
+         << endl;
+    cout << "Senha: ";
+    cin >> password;
+    try
     {
-        string cpf, password;
-        cout << "Informe o CPF do usuario: " << endl
-             << "Exemplo: 025.335.231-27 ou 02533523127" << endl
+        Usuario user(cpf, password);
+        return user;
+    }
+    catch (invalid_argument e)
+    {
+        cerr << e.what() << endl
              << endl;
-    cout:
-        "CPF: ";
-        cin >> cpf;
-        cout << "Informe a senha do novo usuário: " << endl
-             << "Obs.: A senha deve conter letras maiusculas minusculas e numeros." << endl
-             << endl;
-        cout << "Senha: ";
-        cin >> password;
-        try
-        {
-            Usuario user(cpf, password);
-            flag = false;
-        }
-        catch (invalid_argument e)
-        {
-            cerr << e.what() << endl
-                 << endl;
-        }
     }
 }
 
@@ -40,13 +37,19 @@ Usuario::Usuario(string cpf, string password)
     {
         throw invalid_argument("CPF inválido: verifique a existência de Letras ou símbolos fora de posição.");
     }
-    this->cpf = cpf;
+    else
+    {
+        this->cpf = cpf;
+    }
 
     if (!senhaValida(password))
     {
         throw invalid_argument("Senha não bate os requisitos: Certifique-se que contém uma letra maiúscula, uma minúscula e um número.");
     }
-    this->senha = password;
+    else
+    {
+        this->senha = password;
+    }
 }
 
 int Usuario::cpfValido(string code)
@@ -75,17 +78,14 @@ int Usuario::checaNumerosEmString(string code)
     // Checa se há alguma letra na string passada.
     // Letra encontrada retorna 0, letra não encontrada retorna 1
 
-    for (int i = 0; i < code.size(); i++)
+    for (int i = 0; i < code.size(); ++i)
     {
         if (!isdigit(code[i]))
         {
             if (!(code.size() == 14 && (((i == 3 || i == 7) && code[i] == '.') || (i == 11 && code[i] == '-'))))
 
             {
-                /* 
-            Em casos que o tamanho seja 14
-             Caso o cpf possua '.' na posição 3 e 7, ou '-' na posição 11, o cpf ainda esta valido.
-             */
+                /*  Em casos que o tamanho seja 14, caso o cpf possua '.' na posição 3 e 7, ou '-' na posição 11, o cpf ainda esta valido.   */
                 return 0;
             }
         }
