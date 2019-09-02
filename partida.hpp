@@ -21,9 +21,14 @@ protected:
     int horarioValido(string time);
     int precoValido(double price);
     int disponibilidadeValida(int disponibilty);
+
 public:
     Partida(int number, string date, string time, double price, int disponibility);
-
+    int getNumeroSala() { return this->numeroDeSala; }
+    string getData() { return this->data; }
+    string getHorario() { return this->horario; }
+    double getPreco() { return this->preco; }
+    int getDisponibilidade() { return this->disponibilidade; }
 };
 
 #endif // __PARTIDA_HPP__
