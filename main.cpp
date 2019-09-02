@@ -3,6 +3,7 @@
 #include "jogo.hpp"
 #include "partida.hpp"
 #include "ingresso.hpp"
+#include "cartao.hpp"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main()
     // }
     // catch (invalid_argument e)
     // {
-    //     cout << e.what() << endl;
+    //     cerr << e.what() << endl;
     // }
 
     // try
@@ -38,7 +39,7 @@ int main()
     // }
     // catch (invalid_argument e)
     // {
-    //     cout << e.what() << endl;
+    //     cerr << e.what() << endl;
     // }
 
     // try
@@ -48,8 +49,22 @@ int main()
     // }
     // catch (invalid_argument e)
     // {
-    //     cout << e.what() << endl;
+    //     cerr << e.what() << endl;
     // }
+
+    // try
+    // {
+    
+    //     Cartao cartao1("0100000000000090", "389", "00/15");
+    //     cout << "Número do cartão: " << cartao1.getNumero() << endl;
+    //     cout << "Codigo de segurança: " << cartao1.getCodigo() << endl;
+
+    // }
+    // catch(invalid_argument e)
+    // {
+    //     cerr << e.what() << endl;
+    // }
+    
 
     return 0;
 }
