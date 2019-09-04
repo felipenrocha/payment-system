@@ -159,7 +159,7 @@ int Partida::precoValido(double price)
 
 int Partida::disponibilidadeValida(int disponibility)
 {
-    if (disponibility < 0 || disponibility > 250)
+    if (disponibility < 1 || disponibility > 250)
     {
         return 0;
     }

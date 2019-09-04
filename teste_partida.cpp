@@ -3,6 +3,13 @@
 
 // compile: g++ -Wall -g -pthread -o teste_partida teste_partida.cpp -lgtest_main -lgtest -lpthread
 
+int main(int argc, char **argv)
+{
+
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
 TEST(CadastroPartida, CasosTesteNumeroSalaPositivas)
 {
     Partida partida(1, "22/11/98", "15:45", 999.99, 99);
@@ -208,9 +215,71 @@ TEST(Exception, CasosThrowExecptionHorario)
                  invalid_argument);
 }
 
-int main(int argc, char **argv)
+TEST(Exception, CasosThrowExecptionPreco)
 {
 
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    EXPECT_THROW({
+        try
+        {
+            Partida partida(1, "22/11/98", "17:45", -1, 99);
+        }
+        catch (invalid_argument e)
+        {
+            EXPECT_STREQ("Preço inválido, certifique-se que esteja entre 0 e 1000.", e.what());
+            throw;
+        }
+    },
+                 invalid_argument);
+    EXPECT_THROW({
+        try
+        {
+            Partida partida(1, "22/11/98", "17:45", 1000.01, 99);
+        }
+        catch (invalid_argument e)
+        {
+            EXPECT_STREQ("Preço inválido, certifique-se que esteja entre 0 e 1000.", e.what());
+            throw;
+        }
+    },
+                 invalid_argument);
+}
+
+TEST(Exception, CasosThrowExecptionDisponibilidade)
+{
+    EXPECT_THROW({
+        try
+        {
+            Partida partida(1, "22/11/98", "17:45", 900, 251);
+        }
+        catch (invalid_argument e)
+        {
+            EXPECT_STREQ("Disponibilidade inválida, certifique-se de que seja um numero entre 1 e 250.", e.what());
+            throw;
+        }
+    },
+                 invalid_argument);
+    EXPECT_THROW({
+        try
+        {
+            Partida partida(1, "22/11/98", "17:45", 900, 0);
+        }
+        catch (invalid_argument e)
+        {
+            EXPECT_STREQ("Disponibilidade inválida, certifique-se de que seja um numero entre 1 e 250.", e.what());
+            throw;
+        }
+    },
+                 invalid_argument);
+    EXPECT_THROW({
+        try
+        {
+            Partida partida(1, "22/11/98", "17:45", 900, -5);
+        }
+        catch (invalid_argument e)
+        {
+            EXPECT_STREQ("Disponibilidade inválida, certifique-se de que seja um numero entre 1 e 250.", e.what());
+            throw;
+        }
+    },
+                 invalid_argument);
 }
