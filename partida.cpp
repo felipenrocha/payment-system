@@ -133,7 +133,7 @@ int Partida::horarioValido(string time)
     }
 
     if (isdigit(time[3]) && isdigit(time[4]))
-    { //Pegando digitos;
+    { 
         char minutes[2];
         minutes[0] = time[3];
         minutes[1] = time[4];
@@ -159,7 +159,7 @@ int Partida::precoValido(double price)
 
 int Partida::disponibilidadeValida(int disponibility)
 {
-    if (disponibility < 0 || disponibility > 250)
+    if (disponibility < 1 || disponibility > 250)
     {
         return 0;
     }
