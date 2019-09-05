@@ -20,7 +20,7 @@ protected:
 public:
     Usuario(string cpf , string senha);
     string getCpf() { return cpf; }
-    int comparaSenha(string password);
+    bool comparaSenha(string password);
 };
 
 Usuario cadastraUsuario();

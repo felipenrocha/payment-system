@@ -3,33 +3,6 @@
 #include <ctype.h>
 using namespace std;
 
-Usuario cadastraUsuario()
-{
-    bool flag = true;
-
-    string cpf, password;
-    cout << "Informe o CPF do usuario: " << endl
-         << "Exemplo: 025.335.231-27 ou 02533523127" << endl
-         << endl;
-    cout << "CPF: ";
-    cin >> cpf;
-    cout << "Informe a senha do novo usuário: " << endl
-         << "Obs.: A senha deve conter letras maiusculas minusculas e numeros." << endl
-         << endl;
-    cout << "Senha: ";
-    cin >> password;
-    try
-    {
-        Usuario user(cpf, password);
-        return user;
-    }
-    catch (invalid_argument e)
-    {
-        cerr << e.what() << endl
-             << endl;
-    }
-}
-
 Usuario::Usuario(string cpf, string password)
 {
 
@@ -78,7 +51,7 @@ int Usuario::checaNumerosEmString(string code)
     // Checa se há alguma letra na string passada.
     // Letra encontrada retorna 0, letra não encontrada retorna 1
 
-    for (int i = 0; i < code.size(); ++i)
+    for (unsigned int i = 0; i < code.size(); ++i)
     {
         if (!isdigit(code[i]))
         {
@@ -96,7 +69,7 @@ int Usuario::checaNumerosEmString(string code)
 int Usuario::senhaValida(string password)
 {
     bool maiuscula = false, minuscula = false, numero = false;
-    for (int i = 0; i < password.size(); i++)
+    for (unsigned int i = 0; i < password.size(); i++)
     {
         if (isupper(password[i]))
         {
@@ -118,11 +91,11 @@ int Usuario::senhaValida(string password)
     return 0;
 }
 
-int Usuario::comparaSenha(string password)
+bool Usuario::comparaSenha(string password)
 {
     if (password == getSenha())
     {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
