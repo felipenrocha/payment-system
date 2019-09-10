@@ -50,7 +50,7 @@ int Cartao::codigoValido(string code)
     {
         return 0;
     }
-    for (int i = 0; i < code.size(); i++)
+    for (unsigned int i = 0; i < code.size(); i++)
     {
         if (!isdigit(code[i]))
         {
@@ -104,22 +104,50 @@ int Cartao::dataValida(string date)
     return 1;
 }
 
-int Cartao::checaAlgoritmoLuhn(string number)
+bool Cartao::checaAlgoritmoLuhn(string number)
 {
     int numeroDigitos = number.size();
     int soma = 0;
-    for (int i = 0; i < numeroDigitos; i++)
+    bool segundoNumero = false;
+    for (int i = numeroDigitos - 1; i >= 0; i--)
     {
-        if (!isdigit(number[i]))
+        int numero = number[i] - '0';
+        if (segundoNumero)
         {
-            return 0;
+            numero = numero * 2; // Posições ímpares: dobra o valor.
         }
-        soma = (soma + number[i] - '0') % 10;
+        if (numero >= 10)
+        {
+            numero = numero - 9; // A soma de dos algarismos de um numero >= 10 < 18 é igual ao numero - 9
+        }
+        soma = soma + numero;
+        segundoNumero = !segundoNumero;
     }
-    soma = (soma * 9) % 10;
-    if (soma != 0)
+
+    if (soma % 10 == 0)
     {
-        return 0;
+        return true;
     }
-    return 1;
+    else
+    {
+        return false;
+    }
+    // for (int i = numeroDigitos - 1; i > 0; i--)
+    // {
+    //     if (!isdigit(number[i]))
+    //     {
+    //         return false;
+    //     }
+    //     int value = number[i] - '0';
+    //     if (segundoNumero)
+    //     {
+    //         value = value * 2;
+    //     }
+    //     soma += value / 10;
+    //     soma += value % 10;
+    //     cout << "soma inside: " << soma << endl;
+    //     segundoNumero = !segundoNumero;
+    //     // soma = (soma + number[i] - '0') % 10;
+    // }
+    // return (soma % 10 == 0);
 }
