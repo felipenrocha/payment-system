@@ -14,7 +14,7 @@ private:
     string dataValidade;
 
 protected:
-    int checaAlgoritmoLuhn(string number);
+    bool checaAlgoritmoLuhn(string number);
 
 public:
     Cartao(string number, string code, string date);

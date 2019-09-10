@@ -24,8 +24,8 @@ TEST(CadastroUsuario, CasosTesteSenha)
     Usuario usuario("02533523127", "Teste12");
     ASSERT_EQ(true, usuario.comparaSenha("Teste12"));
 
-    Usuario usuario1("02533523127", "TeRs12");
-    ASSERT_EQ(true, usuario1.comparaSenha("TeRs12"));
+    Usuario usuario1("02533523127", "DADAssdavasda2525");
+    ASSERT_EQ(true, usuario1.comparaSenha("DADAssdavasda2525"));
 }
 
 TEST(Exception, ExcecaoCPF)
