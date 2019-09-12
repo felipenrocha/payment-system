@@ -1,7 +1,7 @@
 #include "cartao.cpp"
 #include <gtest/gtest.h>
 
-// compile: g++ -Wall -g -pthread -o teste_usuario teste_usuario.cpp -lgtest_main -lgtest -lpthread
+// compile: g++ -Wall -g -pthread -o teste_cartao teste_cartao.cpp -lgtest_main -lgtest -lpthread
 
 int main(int argc, char **argv)
 {

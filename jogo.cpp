@@ -51,7 +51,11 @@ Jogo::Jogo(string code, string name, string city, string state, int type)
 
 int Jogo::codigoValido(string code)
 {
-    for (int i = 0; i < code.size(); i++)
+    if (code.size() != 3)
+    {
+        return 0;
+    }
+    for (unsigned int i = 0; i < code.size(); i++)
     {
         if (!isdigit(code[i]))
         {
@@ -63,7 +67,7 @@ int Jogo::codigoValido(string code)
 
 int Jogo::nomeECidadeValido(string name)
 {
-    for (int i = 0; i < name.size(); i++)
+    for (unsigned int i = 0; i < name.size(); i++)
     {
 
         if (i > 0 && name[i] == ' ' && name[i - 1] == ' ') // Tiver dois espaços seguidos.
@@ -112,4 +116,5 @@ string Jogo::getTipoDoJogo()
     case 4:
         return "INTERNACIONAL";
     }
+    return NULL;
 }

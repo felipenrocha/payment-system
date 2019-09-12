@@ -14,22 +14,18 @@ private:
     string cidade;
     string estado;
     int tipoDoJogo;
-
-protected:
-    int codigoValido(string code);
-    int nomeECidadeValido(string name);
-    int estadoValido(string state);
-    int tipoValido(int type);
-
 public:
     Jogo(string code, string name, string city, string state, int type);
-
     string getCodigo() { return this->codigoDoJogo; }
     string getNome() { return this->nomeDoJogo; }
     string getCidade() { return this->cidade; }
     string getEstado() { return this->estado; }
     int getTipo() { return this->tipoDoJogo; }
     string getTipoDoJogo();
+    int codigoValido(string code);
+    int nomeECidadeValido(string name);
+    int estadoValido(string state);
+    int tipoValido(int type);
 };
 
 #endif // JOGO_HPP_INCLUDED
