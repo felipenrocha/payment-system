@@ -18,7 +18,7 @@ int Ingresso::codigoValido(string code)
     {
         return 0;
     }
-    for (int i = 0; i < code.size(); i++)
+    for (unsigned int i = 0; i < code.size(); i++)
     {
         if(!isdigit(code[i]))
         {
