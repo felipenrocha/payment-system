@@ -25,3 +25,6 @@ testeIngresso:
 testeJogo:
 	$(CC) -o $(Jogo) $(LIBS)
 	./teste_jogo
+
+clean:
+	rm teste_ingresso teste_usuario teste_partida teste_jogo teste_cartao
