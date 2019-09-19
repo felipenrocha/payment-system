@@ -1,4 +1,4 @@
-#include "jogo.hpp"
+#include "./include/jogo.hpp"
 
 static list<string> estados = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE",
 

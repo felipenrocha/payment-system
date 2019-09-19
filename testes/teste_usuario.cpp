@@ -1,4 +1,4 @@
-#include "usuario.cpp"
+#include "../usuario.cpp"
 #include <gtest/gtest.h>
 
 // compile: g++ -Wall -g -pthread -o teste_usuario teste_usuario.cpp -lgtest_main -lgtest -lpthread

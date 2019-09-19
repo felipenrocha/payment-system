@@ -1,4 +1,4 @@
-#include "cartao.cpp"
+#include "../cartao.cpp"
 #include <gtest/gtest.h>
 
 // compile: g++ -Wall -g -pthread -o teste_cartao teste_cartao.cpp -lgtest_main -lgtest -lpthread
