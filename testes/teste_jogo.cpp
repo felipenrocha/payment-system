@@ -1,4 +1,4 @@
-#include "jogo.cpp"
+#include "../jogo.cpp"
 #include <gtest/gtest.h>
 
 // compile: g++ -Wall -g -pthread -o teste_jogo teste_jogo.cpp -lgtest_main -lgtest -lpthread

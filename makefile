@@ -1,10 +1,10 @@
 CC = g++
 LIBS = -Wall -g -lgtest_main -lgtest -lpthread -pthread
-Usuario = teste_usuario teste_usuario.cpp
-Partida = teste_partida teste_partida.cpp
-Cartao =  teste_cartao teste_cartao.cpp
-Ingresso = teste_ingresso teste_ingresso.cpp
-Jogo = teste_jogo teste_jogo.cpp
+Usuario = teste_usuario testes/teste_usuario.cpp
+Partida = teste_partida testes/teste_partida.cpp
+Cartao =  teste_cartao testes/teste_cartao.cpp
+Ingresso = teste_ingresso testes/teste_ingresso.cpp
+Jogo = teste_jogo testes/teste_jogo.cpp
 
 testeUsuario:
 	${CC} -o  $(Usuario) ${LIBS}

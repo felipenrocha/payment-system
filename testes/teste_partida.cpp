@@ -1,4 +1,4 @@
-#include "partida.cpp"
+#include "../partida.cpp"
 #include <gtest/gtest.h>
 
 // compile: g++ -Wall -g -pthread -o teste_partida teste_partida.cpp -lgtest_main -lgtest -lpthread
