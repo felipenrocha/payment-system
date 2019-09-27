@@ -6,9 +6,15 @@
 #include <list>
 using namespace std;
 
+/**
+* Classe responsável por conter o domínio Ingresso
+*/
 class Ingresso
 {
 private:
+/**
+* Entidades: 
+*/
     string codigo;
 
 public:

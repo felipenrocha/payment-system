@@ -5,10 +5,16 @@
 #include <ctype.h>
 #include <list>
 using namespace std;
+/**
+* Classe responsável por conter o domínio Jogo
+*/
 
 class Jogo
 {
 private:
+/**
+* Entidades: 
+*/
     string codigoDoJogo;
     string nomeDoJogo;
     string cidade;

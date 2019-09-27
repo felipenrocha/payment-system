@@ -5,10 +5,16 @@
 #include <ctype.h>
 #include <list>
 using namespace std;
+/**
+* Classe responsável por conter o domínio Cartao
+*/
 
 class Cartao
 {
 private:
+/**
+* Entidades: 
+*/
     string numero;
     string codigo;
     string dataValidade;
