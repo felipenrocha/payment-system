@@ -6,9 +6,16 @@
 #include <list>
 using namespace std;
 
+/**
+* Classe responsável por conter o domínio Partida
+*/
 class Partida
 {
 private:
+
+/**
+* Entidades: 
+*/
     int numeroDeSala;
     string data;
     string horario;

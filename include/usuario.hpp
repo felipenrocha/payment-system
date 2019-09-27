@@ -3,10 +3,15 @@
 #include <string>
 using namespace std;
 
-
 class Usuario
 {
+/**
+* Classe responsável por conter o domínio Usuario
+*/
 private:
+/**
+* Entidades: 
+*/
     string cpf;
     string senha;
 
@@ -18,7 +23,7 @@ protected:
     int charEhNumero(char digito);
 
 public:
-    Usuario(string cpf , string senha);
+    Usuario(string cpf, string senha);
     string getCpf() { return cpf; }
     bool comparaSenha(string password);
 };
