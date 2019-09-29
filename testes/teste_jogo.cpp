@@ -10,6 +10,9 @@ int main(int argc, char **argv)
     return RUN_ALL_TESTS();
 }
 
+/**
+ * Teste para validação da construção de um Jogo válido
+ */
 TEST(CadastroJogo, CadastroValido)
 {
     Jogo jogo("123", "Flamengo x Vasco", "Rio de Janeiro", "RJ", 1);
@@ -34,7 +37,9 @@ TEST(CadastroJogo, CadastroValido)
     ASSERT_EQ(true, jogo.tipoValido(jogo.getTipo()));
     ASSERT_EQ("LOCAL", jogo.getTipoDoJogo());
 }
-
+/**
+ * Teste para casos de exceção da construção de um Jogo inválido
+ */
 TEST(Exception, CodigoInvalido)
 {
     EXPECT_THROW({

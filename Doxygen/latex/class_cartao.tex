@@ -1,0 +1,91 @@
+\hypertarget{class_cartao}{}\doxysection{Cartao Class Reference}
+\label{class_cartao}\index{Cartao@{Cartao}}
+
+
+{\ttfamily \#include $<$cartao.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cartao_a5011bc16b72227ef66d5229589f6f58c}{Cartao}} (string number, string code, string date)
+\item 
+int \mbox{\hyperlink{class_cartao_a43c434e0f20c9a8a9a877ca7ddb085c3}{numero\+Valido}} (string number)
+\item 
+int \mbox{\hyperlink{class_cartao_a5fc386e76f10a2a9623c29828064af4d}{codigo\+Valido}} (string code)
+\item 
+int \mbox{\hyperlink{class_cartao_a7c909e438c7d977362c7b8f08a9b3423}{data\+Valida}} (string date)
+\item 
+string \mbox{\hyperlink{class_cartao_ad6ad2f297865022fd445e589ca06113d}{get\+Numero}} ()
+\item 
+string \mbox{\hyperlink{class_cartao_adcd584f8b23a7c45ad037c534a20d88a}{get\+Codigo}} ()
+\item 
+string \mbox{\hyperlink{class_cartao_abd52d3fec044ed3c8e58fac5986db5f2}{get\+Data}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_cartao_ab77eb59cca6c71f4046061063ed10c25}{checa\+Algoritmo\+Luhn}} (string number)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável por conter o domínio \mbox{\hyperlink{class_cartao}{Cartao}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cartao_a5011bc16b72227ef66d5229589f6f58c}\label{class_cartao_a5011bc16b72227ef66d5229589f6f58c}} 
+\index{Cartao@{Cartao}!Cartao@{Cartao}}
+\index{Cartao@{Cartao}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{Cartao()}{Cartao()}}
+{\footnotesize\ttfamily Cartao\+::\+Cartao (\begin{DoxyParamCaption}\item[{string}]{number,  }\item[{string}]{code,  }\item[{string}]{date }\end{DoxyParamCaption})}
+
+Construtor da classe Catão, a ideia é validar todos os atributos de acordo com sua estrutura e retornar uma mensagem de exceção caso aquele caso seja inválido. A classe só é criada se todos os argumentos são válidos.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cartao_ab77eb59cca6c71f4046061063ed10c25}\label{class_cartao_ab77eb59cca6c71f4046061063ed10c25}} 
+\index{Cartao@{Cartao}!checaAlgoritmoLuhn@{checaAlgoritmoLuhn}}
+\index{checaAlgoritmoLuhn@{checaAlgoritmoLuhn}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{checaAlgoritmoLuhn()}{checaAlgoritmoLuhn()}}
+{\footnotesize\ttfamily bool Cartao\+::checa\+Algoritmo\+Luhn (\begin{DoxyParamCaption}\item[{string}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+O algoritmo de Luhn é um algoritmo específico utilizado na validação de números de cartão de crédito. uma explicação mais elaborada pode ser encontrada em \href{https://en.wikipedia.org/wiki/Luhn_algorithm,}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Luhn\+\_\+algorithm,}} e existe uma página na internet que checa o processo automaticamente\+: \href{https://www.dcode.fr/luhn-algorithm}{\texttt{ https\+://www.\+dcode.\+fr/luhn-\/algorithm}}\mbox{\Hypertarget{class_cartao_a5fc386e76f10a2a9623c29828064af4d}\label{class_cartao_a5fc386e76f10a2a9623c29828064af4d}} 
+\index{Cartao@{Cartao}!codigoValido@{codigoValido}}
+\index{codigoValido@{codigoValido}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{codigoValido()}{codigoValido()}}
+{\footnotesize\ttfamily int Cartao\+::codigo\+Valido (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+O código é válido se possuir 3 caractéres e todas forem digitos.\mbox{\Hypertarget{class_cartao_a7c909e438c7d977362c7b8f08a9b3423}\label{class_cartao_a7c909e438c7d977362c7b8f08a9b3423}} 
+\index{Cartao@{Cartao}!dataValida@{dataValida}}
+\index{dataValida@{dataValida}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{dataValida()}{dataValida()}}
+{\footnotesize\ttfamily int Cartao\+::data\+Valida (\begin{DoxyParamCaption}\item[{string}]{date }\end{DoxyParamCaption})}
+
+1.\+A data é valida se possuir um tamanho == 5, o 3 º char como \textquotesingle{}/\textquotesingle{} e os restantes digitos; 2.\+Depois são pegados o mes e ano separadamente e transformados em um valor inteiro com a funçã \char`\"{}int atoi(const char)\char`\"{}; 3.\+Por último é checado se aqueles números são válidos como meses e anos;\mbox{\Hypertarget{class_cartao_adcd584f8b23a7c45ad037c534a20d88a}\label{class_cartao_adcd584f8b23a7c45ad037c534a20d88a}} 
+\index{Cartao@{Cartao}!getCodigo@{getCodigo}}
+\index{getCodigo@{getCodigo}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{getCodigo()}{getCodigo()}}
+{\footnotesize\ttfamily string Cartao\+::get\+Codigo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cartao_abd52d3fec044ed3c8e58fac5986db5f2}\label{class_cartao_abd52d3fec044ed3c8e58fac5986db5f2}} 
+\index{Cartao@{Cartao}!getData@{getData}}
+\index{getData@{getData}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily string Cartao\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cartao_ad6ad2f297865022fd445e589ca06113d}\label{class_cartao_ad6ad2f297865022fd445e589ca06113d}} 
+\index{Cartao@{Cartao}!getNumero@{getNumero}}
+\index{getNumero@{getNumero}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{getNumero()}{getNumero()}}
+{\footnotesize\ttfamily string Cartao\+::get\+Numero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_cartao_a43c434e0f20c9a8a9a877ca7ddb085c3}\label{class_cartao_a43c434e0f20c9a8a9a877ca7ddb085c3}} 
+\index{Cartao@{Cartao}!numeroValido@{numeroValido}}
+\index{numeroValido@{numeroValido}!Cartao@{Cartao}}
+\doxysubsubsection{\texorpdfstring{numeroValido()}{numeroValido()}}
+{\footnotesize\ttfamily int Cartao\+::numero\+Valido (\begin{DoxyParamCaption}\item[{string}]{number }\end{DoxyParamCaption})}
+
+Se o número de cartão passado possuir uma quantidade de caractéres diferente de 16, ou não passar no algoritmo de Luhn, o número é inválido.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{cartao_8hpp}{cartao.\+hpp}}\item 
+\mbox{\hyperlink{cartao_8cpp}{cartao.\+cpp}}\end{DoxyCompactItemize}

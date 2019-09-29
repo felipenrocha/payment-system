@@ -1,7 +1,12 @@
-#include "./include/partida.hpp"
+#include "include/partida.hpp"
 
 Partida::Partida(int number, string date, string time, double price, int disponibility)
 {
+    /**
+     * @brief 
+     * O objeto da partida sera instânciado se seu número, data, horario, preco e disponibilidade vorem válidos.
+     */
+
     if (numeroValido(number))
     {
         this->numeroDeSala = number;
@@ -45,6 +50,10 @@ Partida::Partida(int number, string date, string time, double price, int disponi
 }
 
 int Partida::numeroValido(int number)
+    /**
+     * Um número da partida está válido caso estaja entre 1 e 10.
+     * 
+     */
 {
     if (number > 0 && number < 11)
     {
@@ -55,6 +64,15 @@ int Partida::numeroValido(int number)
 
 int Partida::dataValida(string date)
 {
+    /**
+     * A validação da data é feita com 5 partes separadas:
+     * 1. Checa se o formato de entrada possui valor 8 = 'DD/MM/YY';
+     * 2. Checa se o 3º e 6º caracter são '/';
+     * 3. Pega os primeiros dois digitos e os transforma em um valor inteiro para que sejam validados como um dia;
+     * 4. e 5. Análogos ao 3 com suas respectivas posições;
+     * 
+     * Se todas essas regras forem válidas, a função retorna 1.
+     */
     if (date.size() != 8)
     {
 
@@ -117,6 +135,16 @@ int Partida::dataValida(string date)
 
 int Partida::horarioValido(string time)
 {
+    /**
+     * Algoritmo de validação:
+     * 1. Tamanho == 5 'HH:MM';
+     * 2. Checa se os primeiros valores são digitos inteiros;
+     *  2.1 Pega os primeiros valores e os transformam em um valor inteiro para checar se são horas válidas;
+     * 3. Checa se os últimos valores são digitos inteiros;
+     *  3.1 Pega os últimos valores e os transformam em um valor inteiro para checar se são minutos válidos;
+     * 
+     * Se todas as regras passam, a hora é válida (retorna 1).
+     */
     if (time.size() != 5)
         return 0;
     if (time[2] != ':')
@@ -154,6 +182,10 @@ int Partida::horarioValido(string time)
 }
 int Partida::precoValido(double price)
 {
+    /**
+     * O preço é válido se estiver entre 0 e 1000. 
+     */
+
     if (price < 0 || price > 1000)
         return 0;
 
@@ -162,6 +194,10 @@ int Partida::precoValido(double price)
 
 int Partida::disponibilidadeValida(int disponibility)
 {
+    /**
+     * A disponibilidade é válida se ela estiver entre 1 e 250. 
+     * 
+     */
     if (disponibility < 1 || disponibility > 250)
     {
         return 0;

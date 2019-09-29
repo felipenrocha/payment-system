@@ -1,6 +1,5 @@
 #include "../partida.cpp"
 #include <gtest/gtest.h>
-
 // compile: g++ -Wall -g -pthread -o teste_partida teste_partida.cpp -lgtest_main -lgtest -lpthread
 
 int main(int argc, char **argv)
@@ -9,7 +8,9 @@ int main(int argc, char **argv)
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
+/**
+ * Teste para validação da construção de uma Partida válido
+ */
 TEST(CadastroPartida, CasosTesteNumeroSalaPositivas)
 {
     Partida partida(1, "22/11/98", "15:45", 999.99, 99);
@@ -69,6 +70,9 @@ TEST(CadastroPartida, CasosoTesteDisponibilidadePositovos)
     Partida partida3(9, "22/01/00", "17:00", 494, 100);
     ASSERT_EQ(100, partida3.getDisponibilidade());
 }
+/**
+ * Teste para casos de exceção da construção de uma Partida inválido
+ */
 
 TEST(Exception, CasosThrowExecptionNumeroSala)
 {

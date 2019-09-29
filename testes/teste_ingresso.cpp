@@ -10,6 +10,9 @@ int main(int argc, char **argv)
     return RUN_ALL_TESTS();
 }
 
+/**
+ * Teste para validação da construção de um Ingresso válido
+ */
 TEST(CadastroIngresso, CodigoValido)
 {
     Ingresso ingresso("01234");
@@ -21,6 +24,9 @@ TEST(CadastroIngresso, CodigoValido)
     ASSERT_EQ(true, ingresso2.codigoValido(ingresso2.getCodigo()));
 }
 
+/**
+ * Teste para casos de exceção da construção de um Ingresso inválido
+ */
 TEST(Exception, CodigoInvalidoLetras)
 
 {

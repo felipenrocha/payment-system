@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 
 TEST(CadastroUsuario, CasosTesteCPF)
 {
-    Usuario usuario("02533523127", "Teste12");
-    ASSERT_EQ("02533523127", usuario.getCpf());
+    Usuario usuario("025.335.231-27", "Teste12");
+    ASSERT_EQ("025.335.231-27", usuario.getCpf());
 
     Usuario usuario1("025.335.231-27", "Teste12");
     ASSERT_EQ("025.335.231-27", usuario1.getCpf());
@@ -21,10 +21,10 @@ TEST(CadastroUsuario, CasosTesteCPF)
 
 TEST(CadastroUsuario, CasosTesteSenha)
 {
-    Usuario usuario("02533523127", "Teste12");
+    Usuario usuario("025.335.231-27", "Teste12");
     ASSERT_EQ(true, usuario.comparaSenha("Teste12"));
 
-    Usuario usuario1("02533523127", "DADAssdavasda2525");
+    Usuario usuario1("025.335.231-27", "DADAssdavasda2525");
     ASSERT_EQ(true, usuario1.comparaSenha("DADAssdavasda2525"));
 }
 
@@ -79,11 +79,11 @@ TEST(Exception, ExcecaoSenha)
         {
             try
             {
-                Usuario usuario("02533523127", "TESTE12"); // CPF inválido
+                Usuario usuario("025.335.231-27", "TESTE12"); // CPF inválido
             }
             catch (invalid_argument e)
             {
-                EXPECT_STREQ("Senha não bate os requisitos: Certifique-se que contém uma letra maiúscula, uma minúscula e um número.", e.what());
+                EXPECT_STREQ("Senha nao bate os requisitos: Certifique-se que contem uma letra maiuscula, uma minuscula e um numero.", e.what());
                 throw;
             }
         },
@@ -92,11 +92,11 @@ TEST(Exception, ExcecaoSenha)
         {
             try
             {
-                Usuario usuario("02533523127", "teste12"); // CPF inválido
+                Usuario usuario("025.335.231-27", "teste12"); // CPF inválido
             }
             catch (invalid_argument e)
             {
-                EXPECT_STREQ("Senha não bate os requisitos: Certifique-se que contém uma letra maiúscula, uma minúscula e um número.", e.what());
+                EXPECT_STREQ("Senha nao bate os requisitos: Certifique-se que contem uma letra maiuscula, uma minuscula e um numero.", e.what());
                 throw;
             }
         },
@@ -105,11 +105,11 @@ TEST(Exception, ExcecaoSenha)
         {
             try
             {
-                Usuario usuario("02533523127", "Teste"); // CPF inválido
+                Usuario usuario("025.335.231-27", "Teste"); // CPF inválido
             }
             catch (invalid_argument e)
             {
-                EXPECT_STREQ("Senha não bate os requisitos: Certifique-se que contém uma letra maiúscula, uma minúscula e um número.", e.what());
+                EXPECT_STREQ("Senha nao bate os requisitos: Certifique-se que contem uma letra maiuscula, uma minuscula e um numero.", e.what());
                 throw;
             }
         },
