@@ -1,0 +1,99 @@
+\hypertarget{class_usuario}{}\doxysection{Usuario Class Reference}
+\label{class_usuario}\index{Usuario@{Usuario}}
+
+
+{\ttfamily \#include $<$usuario.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_usuario_aa12e00d289195e63d7f664103fcc526d}{Usuario}} (string cpf, string senha)
+\item 
+string \mbox{\hyperlink{class_usuario_aa1eeb8fb2d0d8ac7f2b48d6f79555915}{get\+Cpf}} ()
+\item 
+bool \mbox{\hyperlink{class_usuario_aaad81d544084adce35929283a665671f}{compara\+Senha}} (string password)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_usuario_afccc97ea8f06f7d27510f6e3788f0c19}{cpf\+Valido}} (string code)
+\item 
+string \mbox{\hyperlink{class_usuario_ac7beed1209b2e8aa72a5ae0567f65f07}{get\+Senha}} ()
+\item 
+int \mbox{\hyperlink{class_usuario_a1dd6632854cb0607c9b2de8c198f9f9b}{senha\+Valida}} (string password)
+\item 
+int \mbox{\hyperlink{class_usuario_a4b8f1d863d58c99e130d48e11eeb408f}{checa\+Numeros\+Em\+String}} (string code)
+\item 
+int \mbox{\hyperlink{class_usuario_a2056473e160c1ce22c901652cf8f3e78}{char\+Eh\+Numero}} (char digito)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_usuario_aa12e00d289195e63d7f664103fcc526d}\label{class_usuario_aa12e00d289195e63d7f664103fcc526d}} 
+\index{Usuario@{Usuario}!Usuario@{Usuario}}
+\index{Usuario@{Usuario}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{Usuario()}{Usuario()}}
+{\footnotesize\ttfamily Usuario\+::\+Usuario (\begin{DoxyParamCaption}\item[{string}]{cpf,  }\item[{string}]{senha }\end{DoxyParamCaption})}
+
+O Usuário é instanciado caso seu C\+PF e senha sejam válidos.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_usuario_a2056473e160c1ce22c901652cf8f3e78}\label{class_usuario_a2056473e160c1ce22c901652cf8f3e78}} 
+\index{Usuario@{Usuario}!charEhNumero@{charEhNumero}}
+\index{charEhNumero@{charEhNumero}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{charEhNumero()}{charEhNumero()}}
+{\footnotesize\ttfamily int Usuario\+::char\+Eh\+Numero (\begin{DoxyParamCaption}\item[{char}]{digito }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_usuario_a4b8f1d863d58c99e130d48e11eeb408f}\label{class_usuario_a4b8f1d863d58c99e130d48e11eeb408f}} 
+\index{Usuario@{Usuario}!checaNumerosEmString@{checaNumerosEmString}}
+\index{checaNumerosEmString@{checaNumerosEmString}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{checaNumerosEmString()}{checaNumerosEmString()}}
+{\footnotesize\ttfamily int Usuario\+::checa\+Numeros\+Em\+String (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_usuario_aaad81d544084adce35929283a665671f}\label{class_usuario_aaad81d544084adce35929283a665671f}} 
+\index{Usuario@{Usuario}!comparaSenha@{comparaSenha}}
+\index{comparaSenha@{comparaSenha}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{comparaSenha()}{comparaSenha()}}
+{\footnotesize\ttfamily bool Usuario\+::compara\+Senha (\begin{DoxyParamCaption}\item[{string}]{password }\end{DoxyParamCaption})}
+
+Função utilizada para comparar a senha do usuario instanciada com uma passada qualquer (validação)\mbox{\Hypertarget{class_usuario_afccc97ea8f06f7d27510f6e3788f0c19}\label{class_usuario_afccc97ea8f06f7d27510f6e3788f0c19}} 
+\index{Usuario@{Usuario}!cpfValido@{cpfValido}}
+\index{cpfValido@{cpfValido}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{cpfValido()}{cpfValido()}}
+{\footnotesize\ttfamily int Usuario\+::cpf\+Valido (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Algoritmo para validação de C\+PF\+:
+\begin{DoxyEnumerate}
+\item Número de caractéres == 14 ( 025.\+335.\+231-\/27)
+\item Checa em uma função se os caractéres correspondem aos de um cpdválido.
+\end{DoxyEnumerate}
+
+Retorna 1 caso a função seja válida.\mbox{\Hypertarget{class_usuario_aa1eeb8fb2d0d8ac7f2b48d6f79555915}\label{class_usuario_aa1eeb8fb2d0d8ac7f2b48d6f79555915}} 
+\index{Usuario@{Usuario}!getCpf@{getCpf}}
+\index{getCpf@{getCpf}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getCpf()}{getCpf()}}
+{\footnotesize\ttfamily string Usuario\+::get\+Cpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_usuario_ac7beed1209b2e8aa72a5ae0567f65f07}\label{class_usuario_ac7beed1209b2e8aa72a5ae0567f65f07}} 
+\index{Usuario@{Usuario}!getSenha@{getSenha}}
+\index{getSenha@{getSenha}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getSenha()}{getSenha()}}
+{\footnotesize\ttfamily string Usuario\+::get\+Senha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_usuario_a1dd6632854cb0607c9b2de8c198f9f9b}\label{class_usuario_a1dd6632854cb0607c9b2de8c198f9f9b}} 
+\index{Usuario@{Usuario}!senhaValida@{senhaValida}}
+\index{senhaValida@{senhaValida}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{senhaValida()}{senhaValida()}}
+{\footnotesize\ttfamily int Usuario\+::senha\+Valida (\begin{DoxyParamCaption}\item[{string}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Método para checar se a senha possui uma letra maiúscula minúscula e numero. Algoritmo\+:
+\begin{DoxyEnumerate}
+\item Três valores booleanos setados em false;
+\item Loop pela string; 2.\+1 Se um valor maiusculo é encontrado a variavel maiuscula é setada para true; 2.\+2 e 2.\+3 Análago ao 2.\+1 com suas respectivas especificações;
+\item Se as três variáveis ao final da iteração forem verdadeiras, a senha é válida.
+\end{DoxyEnumerate}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{usuario_8hpp}{usuario.\+hpp}}\item 
+\mbox{\hyperlink{usuario_8cpp}{usuario.\+cpp}}\end{DoxyCompactItemize}

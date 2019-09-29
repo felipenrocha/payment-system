@@ -10,6 +10,9 @@ int main(int argc, char **argv)
     return RUN_ALL_TESTS();
 }
 
+/**
+ * Teste para validação da construção de um Cartão válido
+ */
 TEST(CadastroCartao, TesteNumeroCartaoLuhn)
 {
     Cartao cartao("6637410737643907", "333", "10/22"); // Numero valido para algoritmo de luhn
@@ -43,6 +46,11 @@ TEST(CadastroCartao, TesteValidadeCartao)
     Cartao cartao3("3223876379348459", "421", "11/22");
     ASSERT_EQ(true, cartao3.dataValida(cartao3.getData()));
 }
+
+
+/**
+ * Teste para casos de exceção da construção de um Cartão inválido
+ */
 
 TEST(Exception, ExcecaoNumeroCartao)
 {

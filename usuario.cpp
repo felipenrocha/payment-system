@@ -1,11 +1,13 @@
-#include "./include/usuario.hpp"
+#include "include/usuario.hpp"
 #include <iostream>
 #include <ctype.h>
 using namespace std;
 
 Usuario::Usuario(string cpf, string password)
 {
-
+    /**
+     * O Usuário é instanciado caso seu CPF  e senha sejam válidos.
+     */
     if (!cpfValido(cpf))
     {
         throw invalid_argument("CPF inválido: verifique a existência de Letras ou símbolos fora de posição.");
@@ -17,7 +19,7 @@ Usuario::Usuario(string cpf, string password)
 
     if (!senhaValida(password))
     {
-        throw invalid_argument("Senha não bate os requisitos: Certifique-se que contém uma letra maiúscula, uma minúscula e um número.");
+        throw invalid_argument("Senha nao bate os requisitos: Certifique-se que contem uma letra maiuscula, uma minuscula e um numero.");
     }
     else
     {
@@ -27,22 +29,23 @@ Usuario::Usuario(string cpf, string password)
 
 int Usuario::cpfValido(string code)
 {
+    /**
+     * Algoritmo para validação de CPF:
+     * 1. Número de caractéres == 14 ( 025.335.231-27)
+     * 2. Checa em uma função se os caractéres correspondem aos de um cpdválido.
+     * 
+     * Retorna 1 caso a função seja válida.
+     */
+
     // Função de validação do CPF inserido: 1 CPF válido, 0 CPF inválido
-    if (code.size() != 14 && code.size() != 11)
+    if (code.size() != 14)
     {
         // Caso o CPF não esteja na forma XXX.XXX.XXX-XX nem XXXXXXXXXXX
         return 0;
     }
     else
     {
-        if (checaNumerosEmString(code))
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+        return (checaNumerosEmString(code));
     }
 }
 
@@ -55,10 +58,9 @@ int Usuario::checaNumerosEmString(string code)
     {
         if (!isdigit(code[i]))
         {
-            if (!(code.size() == 14 && (((i == 3 || i == 7) && code[i] == '.') || (i == 11 && code[i] == '-'))))
+            if (!((((i == 3 || i == 7) && code[i] == '.') || (i == 11 && code[i] == '-'))))
 
             {
-                /*  Em casos que o tamanho seja 14, caso o cpf possua '.' na posição 3 e 7, ou '-' na posição 11, o cpf ainda esta valido.   */
                 return 0;
             }
         }
@@ -68,6 +70,16 @@ int Usuario::checaNumerosEmString(string code)
 
 int Usuario::senhaValida(string password)
 {
+    /**
+     * Método para checar se a senha possui uma letra maiúscula minúscula e numero.
+     * Algoritmo:
+     * 1. Três valores booleanos setados em false;
+     * 2. Loop pela string;
+     *  2.1 Se um valor maiusculo é encontrado a variavel maiuscula é setada para true;
+     *  2.2 e 2.3 Análago ao 2.1 com suas respectivas especificações;
+     * 3. Se as três variáveis ao final da iteração forem verdadeiras, a senha é válida.
+     * 
+     */
     bool maiuscula = false, minuscula = false, numero = false;
     for (unsigned int i = 0; i < password.size(); i++)
     {
@@ -93,6 +105,9 @@ int Usuario::senhaValida(string password)
 
 bool Usuario::comparaSenha(string password)
 {
+    /**
+     * Função utilizada para comparar a senha do usuario instanciada com uma passada qualquer (validação)
+     */
     if (password == getSenha())
     {
         return true;

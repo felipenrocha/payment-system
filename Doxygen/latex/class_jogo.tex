@@ -1,0 +1,112 @@
+\hypertarget{class_jogo}{}\doxysection{Jogo Class Reference}
+\label{class_jogo}\index{Jogo@{Jogo}}
+
+
+{\ttfamily \#include $<$jogo.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_a5e1982b7b46123de31d014fb8715c6b1}{Jogo}} (string code, string name, string city, string state, int type)
+\item 
+string \mbox{\hyperlink{class_jogo_a9a145ab721ce4831c1b06f65e93dbd0d}{get\+Codigo}} ()
+\item 
+string \mbox{\hyperlink{class_jogo_ac3b2f270ac5efaba15a532f234d465a5}{get\+Nome}} ()
+\item 
+string \mbox{\hyperlink{class_jogo_a3607ef3b13e57913d77541507904cf85}{get\+Cidade}} ()
+\item 
+string \mbox{\hyperlink{class_jogo_a300d78bd5585f8617682a7d8d6968184}{get\+Estado}} ()
+\item 
+int \mbox{\hyperlink{class_jogo_a97af8aa116c1b03a5cb103702134f89b}{get\+Tipo}} ()
+\item 
+string \mbox{\hyperlink{class_jogo_a8800ee597131bd343148bbc13e9181ed}{get\+Tipo\+Do\+Jogo}} ()
+\item 
+int \mbox{\hyperlink{class_jogo_a7896510549fb18a70c4abe3a34f72721}{codigo\+Valido}} (string code)
+\item 
+int \mbox{\hyperlink{class_jogo_a5333ec057f7ceb0dd69ab9a63b24b0ca}{nome\+E\+Cidade\+Valido}} (string name)
+\item 
+int \mbox{\hyperlink{class_jogo_a99d17baa95c36dac0f79943f3b801805}{estado\+Valido}} (string state)
+\item 
+int \mbox{\hyperlink{class_jogo_a09629ea92c65794059f97b9fd21d0d53}{tipo\+Valido}} (int type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável por conter o domínio \mbox{\hyperlink{class_jogo}{Jogo}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_jogo_a5e1982b7b46123de31d014fb8715c6b1}\label{class_jogo_a5e1982b7b46123de31d014fb8715c6b1}} 
+\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{Jogo()}{Jogo()}}
+{\footnotesize\ttfamily Jogo\+::\+Jogo (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{string}]{name,  }\item[{string}]{city,  }\item[{string}]{state,  }\item[{int}]{type }\end{DoxyParamCaption})}
+
+O construtor do jogo recebe um código, nome, cidade estado e tipo de jogo. O jogo é instanciado caso todos os atributos estejam válidos.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_jogo_a7896510549fb18a70c4abe3a34f72721}\label{class_jogo_a7896510549fb18a70c4abe3a34f72721}} 
+\index{Jogo@{Jogo}!codigoValido@{codigoValido}}
+\index{codigoValido@{codigoValido}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{codigoValido()}{codigoValido()}}
+{\footnotesize\ttfamily int Jogo\+::codigo\+Valido (\begin{DoxyParamCaption}\item[{string}]{code }\end{DoxyParamCaption})}
+
+O código é válido se tiver tamanho 3 e todos valores forem digitos. \mbox{\Hypertarget{class_jogo_a99d17baa95c36dac0f79943f3b801805}\label{class_jogo_a99d17baa95c36dac0f79943f3b801805}} 
+\index{Jogo@{Jogo}!estadoValido@{estadoValido}}
+\index{estadoValido@{estadoValido}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{estadoValido()}{estadoValido()}}
+{\footnotesize\ttfamily int Jogo\+::estado\+Valido (\begin{DoxyParamCaption}\item[{string}]{state }\end{DoxyParamCaption})}
+
+O estado é válido se for um valor contido na lista de estados. Para isso é feito um loop na lista e caso os valores sejam iguais, a função retorna 1.\mbox{\Hypertarget{class_jogo_a3607ef3b13e57913d77541507904cf85}\label{class_jogo_a3607ef3b13e57913d77541507904cf85}} 
+\index{Jogo@{Jogo}!getCidade@{getCidade}}
+\index{getCidade@{getCidade}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getCidade()}{getCidade()}}
+{\footnotesize\ttfamily string Jogo\+::get\+Cidade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_jogo_a9a145ab721ce4831c1b06f65e93dbd0d}\label{class_jogo_a9a145ab721ce4831c1b06f65e93dbd0d}} 
+\index{Jogo@{Jogo}!getCodigo@{getCodigo}}
+\index{getCodigo@{getCodigo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getCodigo()}{getCodigo()}}
+{\footnotesize\ttfamily string Jogo\+::get\+Codigo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_jogo_a300d78bd5585f8617682a7d8d6968184}\label{class_jogo_a300d78bd5585f8617682a7d8d6968184}} 
+\index{Jogo@{Jogo}!getEstado@{getEstado}}
+\index{getEstado@{getEstado}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getEstado()}{getEstado()}}
+{\footnotesize\ttfamily string Jogo\+::get\+Estado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_jogo_ac3b2f270ac5efaba15a532f234d465a5}\label{class_jogo_ac3b2f270ac5efaba15a532f234d465a5}} 
+\index{Jogo@{Jogo}!getNome@{getNome}}
+\index{getNome@{getNome}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string Jogo\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_jogo_a97af8aa116c1b03a5cb103702134f89b}\label{class_jogo_a97af8aa116c1b03a5cb103702134f89b}} 
+\index{Jogo@{Jogo}!getTipo@{getTipo}}
+\index{getTipo@{getTipo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getTipo()}{getTipo()}}
+{\footnotesize\ttfamily int Jogo\+::get\+Tipo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_jogo_a8800ee597131bd343148bbc13e9181ed}\label{class_jogo_a8800ee597131bd343148bbc13e9181ed}} 
+\index{Jogo@{Jogo}!getTipoDoJogo@{getTipoDoJogo}}
+\index{getTipoDoJogo@{getTipoDoJogo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getTipoDoJogo()}{getTipoDoJogo()}}
+{\footnotesize\ttfamily string Jogo\+::get\+Tipo\+Do\+Jogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Essa função é feita para retornar o nome do jogo para cada tio específico.\mbox{\Hypertarget{class_jogo_a5333ec057f7ceb0dd69ab9a63b24b0ca}\label{class_jogo_a5333ec057f7ceb0dd69ab9a63b24b0ca}} 
+\index{Jogo@{Jogo}!nomeECidadeValido@{nomeECidadeValido}}
+\index{nomeECidadeValido@{nomeECidadeValido}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{nomeECidadeValido()}{nomeECidadeValido()}}
+{\footnotesize\ttfamily int Jogo\+::nome\+E\+Cidade\+Valido (\begin{DoxyParamCaption}\item[{string}]{name }\end{DoxyParamCaption})}
+
+O Nome ou cidade são válidos se não possuirem 2 espaços seguidos ou possuir caracteres especiais, números, com exceção do . e barra de espaço.\mbox{\Hypertarget{class_jogo_a09629ea92c65794059f97b9fd21d0d53}\label{class_jogo_a09629ea92c65794059f97b9fd21d0d53}} 
+\index{Jogo@{Jogo}!tipoValido@{tipoValido}}
+\index{tipoValido@{tipoValido}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{tipoValido()}{tipoValido()}}
+{\footnotesize\ttfamily int Jogo\+::tipo\+Valido (\begin{DoxyParamCaption}\item[{int}]{type }\end{DoxyParamCaption})}
+
+O tipo do jogo é valido se estiver entre 1 e 4.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{jogo_8hpp}{jogo.\+hpp}}\item 
+\mbox{\hyperlink{jogo_8cpp}{jogo.\+cpp}}\end{DoxyCompactItemize}

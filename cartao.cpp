@@ -1,7 +1,13 @@
-#include "./include/cartao.hpp"
+#include "include/cartao.hpp"
 
 Cartao::Cartao(string number, string code, string date)
 {
+    /**
+     * @brief
+     * Construtor da classe Catão, a ideia é validar todos os atributos de acordo com sua estrutura e retornar uma
+     * mensagem de exceção caso aquele caso seja inválido. A classe só é criada se todos os argumentos são válidos.
+     * 
+     */
     if (numeroValido(number))
     {
         this->numero = number;
@@ -30,6 +36,10 @@ Cartao::Cartao(string number, string code, string date)
 }
 int Cartao::numeroValido(string numero)
 {
+    /**
+    * Se o número de cartão passado possuir uma quantidade de caractéres diferente de 16, ou não
+    * passar no algoritmo de Luhn, o número é inválido. 
+    */
     if (numero.size() != 16)
     {
         return 0;
@@ -46,6 +56,10 @@ int Cartao::numeroValido(string numero)
 
 int Cartao::codigoValido(string code)
 {
+    /**
+     * O código é válido se possuir 3 caractéres e todas forem digitos. 
+     */
+
     if (code.size() != 3)
     {
         return 0;
@@ -62,6 +76,12 @@ int Cartao::codigoValido(string code)
 
 int Cartao::dataValida(string date)
 {
+    /**
+     * 1.A data é valida se possuir um tamanho == 5, o 3 º char como '/' e os restantes digitos; 
+     * 2.Depois são pegados o mes e ano separadamente e transformados em um valor inteiro com a funçã "int atoi(const char)";
+     * 3.Por último é checado se aqueles números são válidos como meses e anos;
+     */
+
     if (date.size() != 5)
     {
         return 0;
@@ -106,12 +126,24 @@ int Cartao::dataValida(string date)
 
 bool Cartao::checaAlgoritmoLuhn(string number)
 {
+
+    /**
+     * @brief 
+     * O algoritmo de Luhn é um algoritmo específico utilizado na validação de números de cartão de crédito.
+     * uma explicação mais elaborada pode ser encontrada em https://en.wikipedia.org/wiki/Luhn_algorithm, e
+     * existe uma página na internet que checa o processo automaticamente: https://www.dcode.fr/luhn-algorithm
+     */
+
     int numeroDigitos = number.size();
     int soma = 0;
     bool segundoNumero = false;
     for (int i = numeroDigitos - 1; i >= 0; i--)
     {
+        /* Um número em "inteiro" em char menos o valor '0' é seu resultado em inteiro,
+        uma vez que chars são interpretados como inteiros.
+        */
         int numero = number[i] - '0';
+
         if (segundoNumero)
         {
             numero = numero * 2; // Posições ímpares: dobra o valor.
@@ -132,22 +164,4 @@ bool Cartao::checaAlgoritmoLuhn(string number)
     {
         return false;
     }
-    // for (int i = numeroDigitos - 1; i > 0; i--)
-    // {
-    //     if (!isdigit(number[i]))
-    //     {
-    //         return false;
-    //     }
-    //     int value = number[i] - '0';
-    //     if (segundoNumero)
-    //     {
-    //         value = value * 2;
-    //     }
-    //     soma += value / 10;
-    //     soma += value % 10;
-    //     cout << "soma inside: " << soma << endl;
-    //     segundoNumero = !segundoNumero;
-    //     // soma = (soma + number[i] - '0') % 10;
-    // }
-    // return (soma % 10 == 0);
 }

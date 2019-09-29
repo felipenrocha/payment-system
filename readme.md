@@ -64,3 +64,5 @@ Instruções para compilação dos testes unitários:
             
                 - Realiza o teste de ingresso 
 
+
+Obs.: Por estar utilizando o Framework gtest para os testes unitários, o professor autorizou o uso do Linux pois era inviável a compilação no CodeBlocks.

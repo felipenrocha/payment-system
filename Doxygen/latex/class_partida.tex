@@ -1,0 +1,130 @@
+\hypertarget{class_partida}{}\doxysection{Partida Class Reference}
+\label{class_partida}\index{Partida@{Partida}}
+
+
+{\ttfamily \#include $<$partida.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_partida_a56a502baf611fe46d59fb0b78ce57470}{Partida}} (int number, string date, string time, double price, int disponibility)
+\item 
+int \mbox{\hyperlink{class_partida_a39eac819e0daf5e2479b92a555797315}{get\+Numero\+Sala}} ()
+\item 
+string \mbox{\hyperlink{class_partida_a7deddc2a14a84799483e945fb8d4ce68}{get\+Data}} ()
+\item 
+string \mbox{\hyperlink{class_partida_ab52cbd80e361182ea33a1ebdfc8407d7}{get\+Horario}} ()
+\item 
+double \mbox{\hyperlink{class_partida_a880943fce7a68f05c520b9818d71496d}{get\+Preco}} ()
+\item 
+int \mbox{\hyperlink{class_partida_a8c8367c26aadd04cdae3a1bdcc514ddf}{get\+Disponibilidade}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_partida_a3e1b92847ab03d740491d78619016122}{numero\+Valido}} (int number)
+\item 
+int \mbox{\hyperlink{class_partida_a5dda240e4358fe6fd8d2cd797a098447}{data\+Valida}} (string date)
+\item 
+int \mbox{\hyperlink{class_partida_a13f49656fd6572f3e19527fc17f11d8b}{horario\+Valido}} (string time)
+\item 
+int \mbox{\hyperlink{class_partida_a35c843379f1084ce371d92e527ad0dc4}{preco\+Valido}} (double price)
+\item 
+int \mbox{\hyperlink{class_partida_a8932cb9924492f11fc97165e9cdbcc4b}{disponibilidade\+Valida}} (int disponibilty)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável por conter o domínio \mbox{\hyperlink{class_partida}{Partida}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_partida_a56a502baf611fe46d59fb0b78ce57470}\label{class_partida_a56a502baf611fe46d59fb0b78ce57470}} 
+\index{Partida@{Partida}!Partida@{Partida}}
+\index{Partida@{Partida}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{Partida()}{Partida()}}
+{\footnotesize\ttfamily Partida\+::\+Partida (\begin{DoxyParamCaption}\item[{int}]{number,  }\item[{string}]{date,  }\item[{string}]{time,  }\item[{double}]{price,  }\item[{int}]{disponibility }\end{DoxyParamCaption})}
+
+O objeto da partida sera instânciado se seu número, data, horario, preco e disponibilidade vorem válidos.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_partida_a5dda240e4358fe6fd8d2cd797a098447}\label{class_partida_a5dda240e4358fe6fd8d2cd797a098447}} 
+\index{Partida@{Partida}!dataValida@{dataValida}}
+\index{dataValida@{dataValida}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{dataValida()}{dataValida()}}
+{\footnotesize\ttfamily int Partida\+::data\+Valida (\begin{DoxyParamCaption}\item[{string}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+A validação da data é feita com 5 partes separadas\+:
+\begin{DoxyEnumerate}
+\item Checa se o formato de entrada possui valor 8 = \textquotesingle{}D\+D/\+M\+M/\+YY\textquotesingle{};
+\item Checa se o 3º e 6º caracter são \textquotesingle{}/\textquotesingle{};
+\item Pega os primeiros dois digitos e os transforma em um valor inteiro para que sejam validados como um dia;
+\item e 5. Análogos ao 3 com suas respectivas posições;
+\end{DoxyEnumerate}
+
+Se todas essas regras forem válidas, a função retorna 1.\mbox{\Hypertarget{class_partida_a8932cb9924492f11fc97165e9cdbcc4b}\label{class_partida_a8932cb9924492f11fc97165e9cdbcc4b}} 
+\index{Partida@{Partida}!disponibilidadeValida@{disponibilidadeValida}}
+\index{disponibilidadeValida@{disponibilidadeValida}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{disponibilidadeValida()}{disponibilidadeValida()}}
+{\footnotesize\ttfamily int Partida\+::disponibilidade\+Valida (\begin{DoxyParamCaption}\item[{int}]{disponibilty }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+A disponibilidade é válida se ela estiver entre 1 e 250.\mbox{\Hypertarget{class_partida_a7deddc2a14a84799483e945fb8d4ce68}\label{class_partida_a7deddc2a14a84799483e945fb8d4ce68}} 
+\index{Partida@{Partida}!getData@{getData}}
+\index{getData@{getData}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily string Partida\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_partida_a8c8367c26aadd04cdae3a1bdcc514ddf}\label{class_partida_a8c8367c26aadd04cdae3a1bdcc514ddf}} 
+\index{Partida@{Partida}!getDisponibilidade@{getDisponibilidade}}
+\index{getDisponibilidade@{getDisponibilidade}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{getDisponibilidade()}{getDisponibilidade()}}
+{\footnotesize\ttfamily int Partida\+::get\+Disponibilidade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_partida_ab52cbd80e361182ea33a1ebdfc8407d7}\label{class_partida_ab52cbd80e361182ea33a1ebdfc8407d7}} 
+\index{Partida@{Partida}!getHorario@{getHorario}}
+\index{getHorario@{getHorario}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{getHorario()}{getHorario()}}
+{\footnotesize\ttfamily string Partida\+::get\+Horario (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_partida_a39eac819e0daf5e2479b92a555797315}\label{class_partida_a39eac819e0daf5e2479b92a555797315}} 
+\index{Partida@{Partida}!getNumeroSala@{getNumeroSala}}
+\index{getNumeroSala@{getNumeroSala}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{getNumeroSala()}{getNumeroSala()}}
+{\footnotesize\ttfamily int Partida\+::get\+Numero\+Sala (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_partida_a880943fce7a68f05c520b9818d71496d}\label{class_partida_a880943fce7a68f05c520b9818d71496d}} 
+\index{Partida@{Partida}!getPreco@{getPreco}}
+\index{getPreco@{getPreco}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{getPreco()}{getPreco()}}
+{\footnotesize\ttfamily double Partida\+::get\+Preco (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_partida_a13f49656fd6572f3e19527fc17f11d8b}\label{class_partida_a13f49656fd6572f3e19527fc17f11d8b}} 
+\index{Partida@{Partida}!horarioValido@{horarioValido}}
+\index{horarioValido@{horarioValido}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{horarioValido()}{horarioValido()}}
+{\footnotesize\ttfamily int Partida\+::horario\+Valido (\begin{DoxyParamCaption}\item[{string}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Algoritmo de validação\+:
+\begin{DoxyEnumerate}
+\item Tamanho == 5 \textquotesingle{}HH\+:MM\textquotesingle{};
+\item Checa se os primeiros valores são digitos inteiros; 2.\+1 Pega os primeiros valores e os transformam em um valor inteiro para checar se são horas válidas;
+\item Checa se os últimos valores são digitos inteiros; 3.\+1 Pega os últimos valores e os transformam em um valor inteiro para checar se são minutos válidos;
+\end{DoxyEnumerate}
+
+Se todas as regras passam, a hora é válida (retorna 1).\mbox{\Hypertarget{class_partida_a3e1b92847ab03d740491d78619016122}\label{class_partida_a3e1b92847ab03d740491d78619016122}} 
+\index{Partida@{Partida}!numeroValido@{numeroValido}}
+\index{numeroValido@{numeroValido}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{numeroValido()}{numeroValido()}}
+{\footnotesize\ttfamily int Partida\+::numero\+Valido (\begin{DoxyParamCaption}\item[{int}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Um número da partida está válido caso estaja entre 1 e 10. \mbox{\Hypertarget{class_partida_a35c843379f1084ce371d92e527ad0dc4}\label{class_partida_a35c843379f1084ce371d92e527ad0dc4}} 
+\index{Partida@{Partida}!precoValido@{precoValido}}
+\index{precoValido@{precoValido}!Partida@{Partida}}
+\doxysubsubsection{\texorpdfstring{precoValido()}{precoValido()}}
+{\footnotesize\ttfamily int Partida\+::preco\+Valido (\begin{DoxyParamCaption}\item[{double}]{price }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+O preço é válido se estiver entre 0 e 1000.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{partida_8hpp}{partida.\+hpp}}\item 
+\mbox{\hyperlink{partida_8cpp}{partida.\+cpp}}\end{DoxyCompactItemize}
