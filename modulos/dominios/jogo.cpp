@@ -1,4 +1,4 @@
-#include "include/jogo.hpp"
+#include "../../include/jogo.hpp"
 
 /**
  * @brief Para checagem dos estados foi criada uma lista estática que contem os valores das abreviações dos estados,

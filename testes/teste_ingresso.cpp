@@ -1,4 +1,4 @@
-#include "../ingresso.cpp"
+#include "../modulos/dominios/ingresso.cpp"
 #include <gtest/gtest.h>
 
 // compile: g++ -Wall -g -pthread -o teste_ingresso teste_ingresso.cpp -lgtest_main -lgtest -lpthread

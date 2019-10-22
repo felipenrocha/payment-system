@@ -1,4 +1,4 @@
-#include "include/partida.hpp"
+#include "../../include/partida.hpp"
 
 Partida::Partida(int number, string date, string time, double price, int disponibility)
 {
