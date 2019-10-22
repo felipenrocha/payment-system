@@ -5,7 +5,12 @@ Partida = teste_partida testes/teste_partida.cpp
 Cartao =  teste_cartao testes/teste_cartao.cpp
 Ingresso = teste_ingresso testes/teste_ingresso.cpp
 Jogo = teste_jogo testes/teste_jogo.cpp
-
+Main = main main.cpp
+Menu = modulos/apresentacao/menu.cpp
+main:
+	$(CC) -c $(Menu)
+	$(CC) -o $(Main) $(LIBS) menu.o
+	./main
 testeUsuario:
 	${CC} -o  $(Usuario) ${LIBS}
 	./teste_usuario
@@ -27,4 +32,4 @@ testeJogo:
 	./teste_jogo
 
 clean:
-	rm teste_ingresso teste_usuario teste_partida teste_jogo teste_cartao
+	rm teste_ingresso teste_usuario teste_partida teste_jogo teste_cartao main
