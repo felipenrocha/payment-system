@@ -1,4 +1,4 @@
-#include "./include/partida.hpp"
+#include "../../include/partida.hpp"
 
 Partida::Partida(int number, string date, string time, double price, int disponibility)
 {
@@ -67,10 +67,12 @@ int Partida::dataValida(string date)
     }
     if (isdigit(date[0]) && isdigit(date[1]))
     { //Pegando digitos;
+    
         char day[2];
         day[0] = date[0];
         day[1] = date[1];
-        int intDay = atoi(day);
+        int intDay = atoi(day); // Converte string para int
+
 
         if (intDay < 1 || intDay > 31)
             return 0;
@@ -85,7 +87,8 @@ int Partida::dataValida(string date)
         char month[2];
         month[0] = date[3];
         month[1] = date[4];
-        int intMonth = atoi(month);
+        int intMonth = atoi(month); // Converte string para int
+
 
         if (intMonth < 1 || intMonth > 12)
             return 0;
@@ -100,7 +103,7 @@ int Partida::dataValida(string date)
         char year[2];
         year[0] = date[6];
         year[1] = date[7];
-        int intYear = atoi(year);
+        int intYear = atoi(year); // Converte string para int
 
         if (intYear < 0 && intYear > 99)
             return 0;
