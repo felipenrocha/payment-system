@@ -2,20 +2,18 @@
 #define __INTERFACE__
 #include "singleton.hpp"
 
-class Interface : public Singleton
+class Interface
 {
 public:
-    virtual void create(Singleton *instancia);
-    virtual void remove(Singleton *instancia);
-    virtual void update(Singleton *instancia);
-    virtual Singleton *get()
-    {
-        return this->getInstancia();
-    }
+    virtual void create(Interface *instancia);
+    virtual void remove(Interface *instancia);
+    virtual void update(Interface *instancia);
+    virtual Interface *get();
     virtual ~Interface();
 
-private:
-    Interface(Singleton *object);
+protected:
+    Interface *instancia;
+    Interface(Interface *object);
 };
 
 #endif
