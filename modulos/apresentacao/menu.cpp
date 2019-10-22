@@ -14,7 +14,7 @@ void Menu::telaInicial()
     {
         cout << "Selecione uma opcão:" << endl;
         cout << "1) Entrar" << endl;
-        cout << "2) Cadstrar" << endl;
+        cout << "2) Cadastrar" << endl;
         cout << "3) Fechar" << endl;
         cin >> input;
         if (input != 1 && input != 2 && input != 3)
