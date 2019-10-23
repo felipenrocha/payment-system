@@ -24,14 +24,7 @@ void Menu::telaInicial()
 
     } while (input != 1 && input != 2 && input != 3);
 
-    if (input == 1)
-    {
-        login();
-    }
-    else if (input == 2)
-    {
-        registrar();
-    }
+    AutenticacaoInterface *autenticacaoInterface = new AutenticacaoInterface(input);
 }
 
 void Menu::gerenciarInterfaces()
@@ -39,7 +32,7 @@ void Menu::gerenciarInterfaces()
     int input = -1;
     do
     {
-        cout << "Escolha um Domínio para gerenciar : " << endl
+        cout << "Escolha um Domínio para gerenciar: " << endl
              << "1) Usuário" << endl
              << "2) Cartao" << endl
              << "3) Ingresso" << endl
@@ -47,22 +40,16 @@ void Menu::gerenciarInterfaces()
              << "5) Jogo" << endl
              << "6) Sair"
              << endl;
+        cin >> input;
         if (input != -1)
         {
             cout << "Digite uma opção válida!" << endl;
         }
-    } while (input < 1 && input > 5);
+    } while (input < 1 || input > 5);
     switch (input)
     {
     case 1:
         UsuarioInterface *usuarioInterface = new UsuarioInterface();
-        usuarioInterface->gerenciar();
         break;
     }
-}
-void Menu::login()
-{
-}
-void Menu::registrar()
-{
 }

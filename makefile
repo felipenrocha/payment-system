@@ -1,3 +1,5 @@
+# TODO: MUDAR NOME DOS TESTES DE DOMINIO DE "DOMINIO" => "TESTEDOMINIO"
+
 CC = g++
 LIBS = -Wall -g -lgtest_main -lgtest -lpthread -pthread
 Usuario = teste_usuario testes/teste_usuario.cpp
@@ -8,6 +10,7 @@ Jogo = teste_jogo testes/teste_jogo.cpp
 Main = main main.cpp
 Menu = modulos/apresentacao/menu.cpp
 UsuarioInterface = modulos/servicos/usuarioService.cpp
+AutenticacaoInterface = modulos/servicos/autenticacaoService.cpp
 Singleton = modulos/servicos/singleton.cpp
 
 
@@ -15,7 +18,8 @@ main:
 	$(CC) -c $(Menu)
 	$(CC) -c $(Singleton)
 	$(CC) -c $(UsuarioInterface)
-	$(CC) -o $(Main) $(LIBS) menu.o usuarioService.o singleton.o
+	$(CC) -c $(AutenticacaoInterface)
+	$(CC) -o $(Main) $(LIBS) menu.o usuarioService.o autenticacaoService.o singleton.o
 	./main
 testeUsuario:
 	${CC} -o  $(Usuario) ${LIBS}
