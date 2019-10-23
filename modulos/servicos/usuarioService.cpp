@@ -1,4 +1,5 @@
 #include "../../include/usuarioInterface.hpp"
+#include "../../include/gerenciarInterface.hpp"
 
 UsuarioInterface::UsuarioInterface() : Interface()
 {
@@ -12,6 +13,9 @@ UsuarioInterface::~UsuarioInterface()
 void UsuarioInterface::autenticacao()
 {
 }
+void UsuarioInterface::get()
+{
+}
 void UsuarioInterface::create()
 {
 }
@@ -23,7 +27,22 @@ void UsuarioInterface::update()
 }
 void UsuarioInterface::gerenciar()
 {
-    cout << "Selecione uma das opções: " << endl;
-    cout << "1) Remover Usuario" << endl;
-    cout << "2) Editar Usuário" << endl;
+    int operacao = printMenuGerenciar("Usuario");
+    switch (operacao)
+    {
+    case 1:
+        this->get();
+        break;
+    case 2:
+        this->create();
+        break;
+    case 3:
+        this->remove();
+        break;
+    case 4:
+        this->update();
+        break;
+    default:
+        break;
+    }
 }

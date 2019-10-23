@@ -1,15 +1,12 @@
 
 #ifndef __AUTENTICACAO_INTERFACE_HPP__
 #define __AUTENTICACAO_INTERFACE_INTERFACE_HPP__
-#include "interface.hpp"
+#include "singleton.hpp"
 #include "usuario.hpp"
 
-class AutenticacaoInterface : public Interface
+class AutenticacaoInterface : public Singleton
 {
 private:
-    void create();
-    void remove();
-    void update();
     ~AutenticacaoInterface();
 
 public:

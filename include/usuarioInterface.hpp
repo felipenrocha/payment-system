@@ -9,6 +9,7 @@ private:
     void create();
     void remove();
     void update();
+    void get();
     ~UsuarioInterface();
 
 public:

@@ -2,6 +2,7 @@
 
 AutenticacaoInterface::AutenticacaoInterface(int option)
 {
+    this->instancia = this->getInstancia();
     switch (option)
     {
     case 1:
@@ -17,17 +18,6 @@ AutenticacaoInterface::AutenticacaoInterface(int option)
 AutenticacaoInterface::~AutenticacaoInterface()
 {
 }
-
-void AutenticacaoInterface::create()
-{
-}
-void AutenticacaoInterface::remove()
-{
-}
-void AutenticacaoInterface::update()
-{
-}
-
 void AutenticacaoInterface::login()
 {
     cout << "login sucedido" << endl;
