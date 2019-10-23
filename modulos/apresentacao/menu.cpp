@@ -3,13 +3,35 @@
 Menu::Menu()
 {
     this->telaInicial();
+    this->gerenciarInterfaces();
 }
 
 void Menu::telaInicial()
 {
     cout << "Bem-Vindo ao Sistema de Vendas e Consulta de Ingressos!" << endl;
-    this->usuarioInterface = new UsuarioInterface();
-    this->gerenciarInterfaces();
+    int input;
+    do
+    {
+        cout << "Selecione uma opção:" << endl;
+        cout << "1) Entrar" << endl;
+        cout << "2) Cadastrar" << endl;
+        cout << "3) Fechar" << endl;
+        cin >> input;
+        if (input != 1 && input != 2 && input != 3)
+        {
+            cout << "Por favor, selecione uma opção válida!" << endl;
+        }
+
+    } while (input != 1 && input != 2 && input != 3);
+
+    if (input == 1)
+    {
+        login();
+    }
+    else if (input == 2)
+    {
+        registrar();
+    }
 }
 
 void Menu::gerenciarInterfaces()
@@ -17,9 +39,9 @@ void Menu::gerenciarInterfaces()
     int input = -1;
     do
     {
-        cout << "Escolha um Domínio para alterar : " << endl
+        cout << "Escolha um Domínio para gerenciar : " << endl
              << "1) Usuário" << endl
-             << "2) Cartao"
+             << "2) Cartao" << endl
              << "3) Ingresso" << endl
              << "4) Partida" << endl
              << "5) Jogo" << endl
@@ -33,9 +55,14 @@ void Menu::gerenciarInterfaces()
     switch (input)
     {
     case 1:
+        UsuarioInterface *usuarioInterface = new UsuarioInterface();
         usuarioInterface->gerenciar();
         break;
-    default:
-        break;
     }
+}
+void Menu::login()
+{
+}
+void Menu::registrar()
+{
 }

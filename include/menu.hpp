@@ -15,8 +15,7 @@ public:
     void registrar();
     // ~Menu();
     void telaInicial();
-    void gerenciarInterfaces();
-    UsuarioInterface *usuarioInterface() = 0;
+    void gerenciarInterfaces(); 
 };
 
 #endif
