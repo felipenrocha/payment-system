@@ -6,5 +6,6 @@
 #include "interface.hpp"
 #include "usuarioInterface.hpp"
 #include "singleton.hpp"
+#include "autenticacaoInterface.hpp"
 
 #endif

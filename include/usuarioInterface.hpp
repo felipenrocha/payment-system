@@ -12,8 +12,6 @@ private:
     ~UsuarioInterface();
 
 public:
-    bool registrarUsuario();
-    bool loginUsuario();
     void removerUsuario();
     void editarUsuario();
     void autenticacao();

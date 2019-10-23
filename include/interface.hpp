@@ -13,8 +13,6 @@ public:
     virtual void update() = 0;
     Interface()
     {
-        cout << "interface" << endl;
-
         this->instancia = this->getInstancia();
     };
 };
