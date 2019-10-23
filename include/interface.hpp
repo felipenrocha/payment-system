@@ -1,19 +1,22 @@
 #ifndef __INTERFACE__
 #define __INTERFACE__
+#include <iostream>
+#include <string>
 #include "singleton.hpp"
+using namespace std;
 
-class Interface
+class Interface : public Singleton
 {
 public:
-    virtual void create(Interface *instancia);
-    virtual void remove(Interface *instancia);
-    virtual void update(Interface *instancia);
-    virtual Interface *get();
-    virtual ~Interface();
+    virtual void create() = 0;
+    virtual void remove() = 0;
+    virtual void update() = 0;
+    Interface()
+    {
+        cout << "interface" << endl;
 
-protected:
-    Interface *instancia;
-    Interface(Interface *object);
+        this->instancia = this->getInstancia();
+    };
 };
 
 #endif

@@ -6,18 +6,19 @@
 class UsuarioInterface : public Interface
 {
 private:
-    Usuario *user;
+    void create();
+    void remove();
+    void update();
     ~UsuarioInterface();
-    void create(Singleton *instancia);
-    void remove(Singleton *instancia);
-    void update(Singleton *instancia);
 
 public:
-    UsuarioInterface(Usuario *padrao, Interface *object);
     bool registrarUsuario();
     bool loginUsuario();
-    bool removerUsuario();
-    bool editarUsuario();
+    void removerUsuario();
+    void editarUsuario();
+    void autenticacao();
+    void gerenciar();
+    UsuarioInterface();
 };
 
 #endif

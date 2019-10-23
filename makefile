@@ -7,9 +7,15 @@ Ingresso = teste_ingresso testes/teste_ingresso.cpp
 Jogo = teste_jogo testes/teste_jogo.cpp
 Main = main main.cpp
 Menu = modulos/apresentacao/menu.cpp
+UsuarioInterface = modulos/servicos/usuarioService.cpp
+Singleton = modulos/servicos/singleton.cpp
+
+
 main:
 	$(CC) -c $(Menu)
-	$(CC) -o $(Main) $(LIBS) menu.o
+	$(CC) -c $(Singleton)
+	$(CC) -c $(UsuarioInterface)
+	$(CC) -o $(Main) $(LIBS) menu.o usuarioService.o singleton.o
 	./main
 testeUsuario:
 	${CC} -o  $(Usuario) ${LIBS}
@@ -32,4 +38,5 @@ testeJogo:
 	./teste_jogo
 
 clean:
-	rm teste_ingresso teste_usuario teste_partida teste_jogo teste_cartao main
+	rm teste_ingresso teste_usuario teste_partida teste_jogo teste_cartao main menu
+	clear

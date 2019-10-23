@@ -1,42 +1,41 @@
-#include "../../include/menu.hpp"
+#include "../../include/index.hpp"
 
 Menu::Menu()
 {
-    telaInicial();
+    this->telaInicial();
 }
 
 void Menu::telaInicial()
 {
     cout << "Bem-Vindo ao Sistema de Vendas e Consulta de Ingressos!" << endl;
-    int input;
+    this->usuarioInterface = new UsuarioInterface();
+    this->gerenciarInterfaces();
+}
 
+void Menu::gerenciarInterfaces()
+{
+    int input = -1;
     do
     {
-        cout << "Selecione uma opcão:" << endl;
-        cout << "1) Entrar" << endl;
-        cout << "2) Cadastrar" << endl;
-        cout << "3) Fechar" << endl;
-        cin >> input;
-        if (input != 1 && input != 2 && input != 3)
+        cout << "Escolha um Domínio para alterar : " << endl
+             << "1) Usuário" << endl
+             << "2) Cartao"
+             << "3) Ingresso" << endl
+             << "4) Partida" << endl
+             << "5) Jogo" << endl
+             << "6) Sair"
+             << endl;
+        if (input != -1)
         {
-            cout << "Por favor, selecione uma opção válida!" << endl;
+            cout << "Digite uma opção válida!" << endl;
         }
-
-    } while (input != 1 && input != 2 && input != 3);
-    if (input == 1)
+    } while (input < 1 && input > 5);
+    switch (input)
     {
-        login();
+    case 1:
+        usuarioInterface->gerenciar();
+        break;
+    default:
+        break;
     }
-    else if (input == 2)
-    {
-        registrar();
-    }
-}
-void Menu::login()
-{
-    cout << "login" << endl;
-}
-void Menu::registrar()
-{
-    cout << "registrar" << endl;
 }
