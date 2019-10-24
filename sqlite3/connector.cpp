@@ -10,7 +10,7 @@ int main()
     
     // Save the connection result
     int exit = 0;
-    exit = sqlite3_open("example.db", &db); 
+    exit = sqlite3_open("SGVI_API", &db); 
   
     // Test if there was an error
     if (exit) { 
