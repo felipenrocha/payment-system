@@ -1,7 +1,12 @@
 # TODO: MUDAR NOME DOS TESTES DE DOMINIO DE "DOMINIO" => "TESTEDOMINIO"
 
+
+#MYSQL SERVER:
+MYSQL_CONCPP_DIR = /usr/include/
+CPPFLAGS = -I $(MYSQL_CONCPP_DIR)/include -L $(MYSQL_CONCPP_DIR)/lib64
+
 CC = g++
-LIBS = -Wall -g -lgtest_main -lgtest -lpthread -pthread
+LIBS = -lmysqlcppconn8 -Wall -g -lgtest_main -lgtest -lpthread -pthread
 Usuario = teste_usuario testes/teste_usuario.cpp
 Partida = teste_partida testes/teste_partida.cpp
 Cartao =  teste_cartao testes/teste_cartao.cpp

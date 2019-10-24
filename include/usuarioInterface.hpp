@@ -15,7 +15,6 @@ private:
 public:
     void removerUsuario();
     void editarUsuario();
-    void autenticacao();
     void gerenciar();
     UsuarioInterface();
 };

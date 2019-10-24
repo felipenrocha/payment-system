@@ -1,6 +1,6 @@
 #include "../../include/usuarioInterface.hpp"
 #include "../../include/gerenciarInterface.hpp"
-
+#include <mysqlx/xdevapi.h>
 UsuarioInterface::UsuarioInterface() : Interface()
 {
     this->gerenciar();
