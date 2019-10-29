@@ -1,29 +1,31 @@
-#include <iostream> 
-#include <sqlite3.h>
+#include "../include/connector.hpp"
 
 using namespace std;
-  
-int main() 
-{ 
+
+Connector::Connector()
+{
+
     // Pointer to SQLite connection
-    sqlite3* db; 
-    
+
     // Save the connection result
     int exit = 0;
-    exit = sqlite3_open("SGVI_API", &db); 
-  
-    // Test if there was an error
-    if (exit) { 
-        
-        cout << "DB Open Error: " << sqlite3_errmsg(db) << endl; 
-        
-    } else {
+    exit = sqlite3_open("SGVI_API", &this->db);
 
-        cout << "Opened Database Successfully!" << endl; 
+    // Test if there was an error
+    if (exit)
+    {
+
+        cout << "DB Open Error: " << sqlite3_errmsg(db) << endl;
     }
-    
-    // Close the connection
-    sqlite3_close(db); 
-    
-    return (0); 
-} 
+    else
+    {
+
+        // cout << "Opened Database Successfully!" << endl;
+    }
+}
+
+Connector::~Connector()
+{
+
+    sqlite3_close(this->db);
+}

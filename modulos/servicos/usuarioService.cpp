@@ -1,19 +1,44 @@
 #include "../../include/usuarioInterface.hpp"
 #include "../../include/gerenciarInterface.hpp"
 #include <mysqlx/xdevapi.h>
-UsuarioInterface::UsuarioInterface() : Interface()
+UsuarioInterface::UsuarioInterface(sqlite3 *db) : Interface(db)
 {
-    this->gerenciar();
+    bool tableCreation = this->createTable();
+    if (tableCreation)
+    {
+        this->gerenciar();
+    }
+    else
+    {
+        throw invalid_argument("Tabela não foi criada");
+    }
 }
 
 UsuarioInterface::~UsuarioInterface()
 {
 }
 
-void UsuarioInterface::autenticacao()
+bool UsuarioInterface::createTable()
 {
+    const char *sqlQuery;
+
+    sqlQuery = "CREATE IF NOT EXISTS TABLE USUARIO("
+               "ID INT PRIMARY        KEY      NOT NULL,"
+               "CPF                   TEXT     NOT NULL,"
+               "SENHA                 TEXT     NOT NULL,"
+               ");";
+    int query = sqlite3_exec(this->getDB(), sqlQuery, NULL, NULL, NULL);
+
+    if (!query)
+    {
+        throw invalid_argument("Não foi possível criar a tabela");
+    }
+    else
+    {
+        return true;
+    }
 }
-void UsuarioInterface::get()
+void UsuarioInterface::add()
 {
 }
 void UsuarioInterface::create()

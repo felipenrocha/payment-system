@@ -9,14 +9,15 @@ private:
     void create();
     void remove();
     void update();
-    void get();
+    void add();
+    bool createTable();
     ~UsuarioInterface();
 
 public:
     void removerUsuario();
     void editarUsuario();
     void gerenciar();
-    UsuarioInterface();
+    UsuarioInterface(sqlite3 *db);
 };
 
 #endif
