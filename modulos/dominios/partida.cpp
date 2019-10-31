@@ -1,7 +1,10 @@
 #include "../../include/partida.hpp"
 
-Partida::Partida(int number, string date, string time, double price, int disponibility)
+Partida::Partida(int number, string date, string time, double price, int disponibility) : Singleton()
 {
+
+    this->id = this->getInstancia();
+
     /**
      * @brief 
      * O objeto da partida sera instânciado se seu número, data, horario, preco e disponibilidade vorem válidos.
@@ -50,7 +53,7 @@ Partida::Partida(int number, string date, string time, double price, int disponi
 }
 
 int Partida::numeroValido(int number)
-    /**
+/**
      * Um número da partida está válido caso estaja entre 1 e 10.
      * 
      */
@@ -85,12 +88,11 @@ int Partida::dataValida(string date)
     }
     if (isdigit(date[0]) && isdigit(date[1]))
     { //Pegando digitos;
-    
+
         char day[2];
         day[0] = date[0];
         day[1] = date[1];
         int intDay = atoi(day); // Converte string para int
-
 
         if (intDay < 1 || intDay > 31)
             return 0;
@@ -106,7 +108,6 @@ int Partida::dataValida(string date)
         month[0] = date[3];
         month[1] = date[4];
         int intMonth = atoi(month); // Converte string para int
-
 
         if (intMonth < 1 || intMonth > 12)
             return 0;
@@ -164,7 +165,7 @@ int Partida::horarioValido(string time)
     }
 
     if (isdigit(time[3]) && isdigit(time[4]))
-    { 
+    {
         char minutes[2];
         minutes[0] = time[3];
         minutes[1] = time[4];
