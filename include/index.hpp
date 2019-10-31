@@ -7,5 +7,5 @@
 #include "usuarioInterface.hpp"
 #include "singleton.hpp"
 #include "autenticacaoInterface.hpp"
-
+#include "jogoInterface.hpp"
 #endif

@@ -1,8 +1,8 @@
 #include "../../include/index.hpp"
 
-Menu::Menu(sqlite3 * db)
+Menu::Menu(sqlite3 *db)
 {
-    
+
     this->db = db;
     // this->telaInicial();
     this->gerenciarInterfaces();
@@ -31,6 +31,8 @@ void Menu::telaInicial()
 
 void Menu::gerenciarInterfaces()
 {
+    UsuarioInterface *usuarioInterface(NULL);
+    JogoInterface *jogoInterface(NULL);
 
     int input = -1;
     do
@@ -52,7 +54,12 @@ void Menu::gerenciarInterfaces()
     switch (input)
     {
     case 1:
-        UsuarioInterface usuarioInterface(this->db);
+        usuarioInterface = new UsuarioInterface(this->db);
+        break;
+    case 5:
+        jogoInterface = new JogoInterface(this->db);
+        break;
+    default:
         break;
     }
 }

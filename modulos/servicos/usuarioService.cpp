@@ -28,7 +28,7 @@ bool UsuarioInterface::createTable()
 {
 
     char *zErrMsg = 0;
-    char const *sqlQuery = "CREATE TABLE USUARIO(ID INT PRIMARY KEY     NOT NULL, CPF TEXT NOT NULL, SENHA INT NOT NULL);";
+    char const *sqlQuery = "CREATE TABLE USUARIO(ID INT PRIMARY KEY     NOT NULL, CPF TEXT NOT NULL, SENHA TEXT NOT NULL);";
     int query = sqlite3_exec(this->getDB(), sqlQuery, callback, 0, &zErrMsg);
     if (!query)
     {

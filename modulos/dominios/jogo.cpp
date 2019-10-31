@@ -9,8 +9,9 @@ static list<string> estados = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "
                                "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
 ;
 
-Jogo::Jogo(string code, string name, string city, string state, int type)
+Jogo::Jogo(string code, string name, string city, string state, int type) : Singleton()
 {
+    this->id = this->getInstancia();
 
     /**
  * @brief O construtor do jogo recebe um código, nome, cidade estado e tipo de jogo. O jogo é instanciado
