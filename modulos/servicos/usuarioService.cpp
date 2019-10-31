@@ -143,8 +143,22 @@ void UsuarioInterface::update()
     if (option == 1)
     {
         string newCpf;
-        cout << "Insira o novo CPF: ";
-        cin >> newCpf;
+        Usuario *usuarioBase(NULL);
+        do
+        {
+            cout << "Insira o novo CPF: ";
+            cin >> newCpf;
+            try
+            {
+                usuarioBase = new Usuario(newCpf, "Admin123");
+            }
+            catch (invalid_argument e)
+            {
+                cout << e.what() << endl;
+            }
+
+        } while (!usuarioBase);
+
         query << "UPDATE USUARIO SET CPF ='" << newCpf << "'WHERE CPF = '" << cpf << "';";
         const char *data = "Callback function called";
         string s = query.str();
@@ -154,8 +168,22 @@ void UsuarioInterface::update()
     else
     {
         string newPassword;
-        cout << "Insira a nova senha: ";
-        cin >> newPassword;
+        Usuario *usuarioBase(NULL);
+        do
+        {
+            cout << "Insira a nova senha: ";
+            cin >> newPassword;
+            try
+            {
+                usuarioBase = new Usuario("025.335.231-27", newPassword);
+            }
+            catch (invalid_argument e)
+            {
+                cout << e.what() << endl;
+            }
+
+        } while (!usuarioBase);
+
         query << "UPDATE USUARIO SET SENHA ='" << newPassword << "'WHERE CPF = '" << cpf << "'";
         const char *data = "Callback function called";
         string s = query.str();
