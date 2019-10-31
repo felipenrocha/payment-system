@@ -5,11 +5,12 @@ int printMenuGerenciar(string interface)
     do
     {
         cout << "Selecione uma das opções: " << endl
-             << "1) Ver " << interface << " Atual" << endl
+             << "1) Ver Lista de " << interface << "s" << endl
              << "2) Criar " << interface << endl
              << "3) Remover " << interface << endl
              << "4) Editar " << interface << endl
              << "5) Sair " << endl;
+        cin >> input;
         if (input < 1 || input > 5)
         {
             cout << "Por favor, selecione uma opção válida!" << endl;

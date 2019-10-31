@@ -1,34 +1,37 @@
 #include "../../include/index.hpp"
 
-Menu::Menu()
+Menu::Menu(sqlite3 * db)
 {
-    this->telaInicial();
+    
+    this->db = db;
+    // this->telaInicial();
     this->gerenciarInterfaces();
 }
 
 void Menu::telaInicial()
 {
-    cout << "Bem-Vindo ao Sistema de Vendas e Consulta de Ingressos!" << endl;
-    int input;
-    do
-    {
-        cout << "Selecione uma opção:" << endl;
-        cout << "1) Entrar" << endl;
-        cout << "2) Cadastrar" << endl;
-        cout << "3) Fechar" << endl;
-        cin >> input;
-        if (input != 1 && input != 2 && input != 3)
-        {
-            cout << "Por favor, selecione uma opção válida!" << endl;
-        }
+    // cout << "Bem-Vindo ao Sistema de Vendas e Consulta de Ingressos!" << endl;
+    // int input;
+    // do
+    // {
+    //     cout << "Selecione uma opção:" << endl;
+    //     cout << "1) Entrar" << endl;
+    //     cout << "2) Cadastrar" << endl;
+    //     cout << "3) Fechar" << endl;
+    //     cin >> input;
+    //     if (input != 1 && input != 2 && input != 3)
+    //     {
+    //         cout << "Por favor, selecione uma opção válida!" << endl;
+    //     }
 
-    } while (input != 1 && input != 2 && input != 3);
+    // } while (input != 1 && input != 2 && input != 3);
 
-    AutenticacaoInterface *autenticacaoInterface = new AutenticacaoInterface(input);
+    // AutenticacaoInterface *autenticacaoInterface = new AutenticacaoInterface(input);
 }
 
 void Menu::gerenciarInterfaces()
 {
+
     int input = -1;
     do
     {
@@ -41,7 +44,7 @@ void Menu::gerenciarInterfaces()
              << "6) Sair"
              << endl;
         cin >> input;
-        if (input != -1)
+        if (input < 1 || input > 5)
         {
             cout << "Digite uma opção válida!" << endl;
         }
@@ -49,7 +52,7 @@ void Menu::gerenciarInterfaces()
     switch (input)
     {
     case 1:
-        UsuarioInterface *usuarioInterface = new UsuarioInterface();
+        UsuarioInterface usuarioInterface(this->db);
         break;
     }
 }

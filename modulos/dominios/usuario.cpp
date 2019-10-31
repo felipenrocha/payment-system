@@ -2,12 +2,14 @@
 #include <iostream>
 #include <ctype.h>
 using namespace std;
+// Singleton *Singleton::instancia = 0;
 
-Usuario::Usuario(string cpf, string password)
+Usuario::Usuario(string cpf, string password) : Singleton()
 {
     /**
      * O Usuário é instanciado caso seu CPF  e senha sejam válidos.
      */
+    this->id = this->getInstancia();
     if (!cpfValido(cpf))
     {
         throw invalid_argument("CPF inválido: verifique a existência de Letras ou símbolos fora de posição.");

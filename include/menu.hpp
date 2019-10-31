@@ -4,18 +4,20 @@
 #include <string>
 #include <ctype.h>
 #include "index.hpp"
+
 // TODO: FIX BUG usuarioInterface-> não esta sendo referenciada como tipo.
 using namespace std;
 
 class Menu
 {
 public:
-    Menu();
+    sqlite3 *db;
+    Menu(sqlite3 * db);
     void login();
     void registrar();
     // ~Menu();
     void telaInicial();
-    void gerenciarInterfaces(); 
+    void gerenciarInterfaces();
 };
 
 #endif

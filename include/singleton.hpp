@@ -6,14 +6,21 @@
 #include <ctype.h>
 #include <list>
 using namespace std;
+
 class Singleton
 {
 protected:
     static Singleton *instancia;
-    Singleton();
+    Singleton(){};
 
 public:
-    static Singleton *getInstancia();
+    static Singleton *getInstancia()
+    {
+        if (instancia == 0)
+            instancia = new Singleton();
+    
+        return instancia;
+    };
 };
 
 #endif

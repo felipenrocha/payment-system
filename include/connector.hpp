@@ -10,6 +10,7 @@ private:
     sqlite3 *db;
 
 public:
+    sqlite3 *getDB() { return this->db; }
     Connector();
     ~Connector();
 };
