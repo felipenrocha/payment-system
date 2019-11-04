@@ -5,6 +5,7 @@ Ingresso::Ingresso(string code) : Singleton()
     /**
      * @brief O construtor do ingresso irá instanciar um objeto caso o código do ingresso seja válido.
      */
+    this->id = this->getInstancia();
     if (codigoValido(code))
     {
         this->codigo = code;

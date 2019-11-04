@@ -10,4 +10,5 @@
 #include "jogoInterface.hpp"
 #include "ingressoInterface.hpp"
 #include "partidaInterface.hpp"
+#include "cartaoInterface.hpp"
 #endif

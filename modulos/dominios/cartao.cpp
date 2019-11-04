@@ -1,7 +1,8 @@
 #include "../../include/cartao.hpp"
 
-Cartao::Cartao(string number, string code, string date)
+Cartao::Cartao(string number, string code, string date) : Singleton()
 {
+    this->id = this->getInstancia();
     /**
      * @brief
      * Construtor da classe Catão, a ideia é validar todos os atributos de acordo com sua estrutura e retornar uma

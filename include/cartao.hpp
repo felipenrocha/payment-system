@@ -4,17 +4,19 @@
 #include <string>
 #include <ctype.h>
 #include <list>
+#include "singleton.hpp"
 using namespace std;
 /**
 * Classe responsável por conter o domínio Cartao
 */
 
-class Cartao
+class Cartao : public Singleton
 {
 private:
-/**
+    /**
 * Entidades: 
 */
+    Singleton *id;
     string numero;
     string codigo;
     string dataValidade;
@@ -23,6 +25,11 @@ protected:
     bool checaAlgoritmoLuhn(string number);
 
 public:
+    Cartao() : Singleton()
+    {
+        this->id = NULL;
+        this->instancia = NULL;
+    }
     Cartao(string number, string code, string date);
     int numeroValido(string number);
     int codigoValido(string code);

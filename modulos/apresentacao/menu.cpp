@@ -35,6 +35,7 @@ void Menu::gerenciarInterfaces()
     JogoInterface *jogoInterface(NULL);
     PartidaInterface *partidaInterface(NULL);
     IngressoInterface *ingressoInterface(NULL);
+    CartaoInterface *cartaoInterface(NULL);
     int input = -1;
     do
     {
@@ -56,12 +57,19 @@ void Menu::gerenciarInterfaces()
     {
     case 1:
         usuarioInterface = new UsuarioInterface(this->db);
+        break;
+    case 2:
+        cartaoInterface = new CartaoInterface(this->db);
+        break;
     case 3:
         ingressoInterface = new IngressoInterface(this->db);
+        break;
     case 4:
         partidaInterface = new PartidaInterface(this->db);
+        break;
     case 5:
         jogoInterface = new JogoInterface(this->db);
+        break;
     default:
         break;
     }
