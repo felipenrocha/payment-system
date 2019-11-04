@@ -213,7 +213,7 @@ void PartidaInterface::update()
         Partida *partidaBase(NULL);
         do
         {
-            cout << "Insira o novo Preçoo: ";
+            cout << "Insira o novo Preço: ";
             cin >> newPrice;
             try
             {

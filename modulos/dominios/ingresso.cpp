@@ -1,6 +1,6 @@
 #include "../../include/ingresso.hpp"
 
-Ingresso::Ingresso(string code)
+Ingresso::Ingresso(string code) : Singleton()
 {
     /**
      * @brief O construtor do ingresso irá instanciar um objeto caso o código do ingresso seja válido.
