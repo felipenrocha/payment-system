@@ -1,12 +1,12 @@
-#include "../../include/cartaoInterface.hpp"
-#include "../../include/gerenciarInterface.hpp"
+#include "../../include/cartaoRepository.hpp"
+#include "../../include/gerenciarRepository.hpp"
 #include <iostream>
 #include <string.h>
 #include <sstream>
 
 using namespace std;
 
-CartaoInterface::CartaoInterface(sqlite3 *db) : Interface(db)
+CartaoRepository::CartaoRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
     if (tableCreation)
@@ -20,11 +20,11 @@ CartaoInterface::CartaoInterface(sqlite3 *db) : Interface(db)
     }
 }
 
-CartaoInterface::~CartaoInterface()
+CartaoRepository::~CartaoRepository()
 {
 }
 
-bool CartaoInterface::createTable()
+bool CartaoRepository::createTable()
 {
 
     char *zErrMsg = 0;
@@ -44,7 +44,7 @@ bool CartaoInterface::createTable()
         return true;
     }
 }
-void CartaoInterface::add()
+void CartaoRepository::add()
 {
     Cartao *newCard(NULL);
     stringstream query;
@@ -85,7 +85,7 @@ void CartaoInterface::add()
 
     while (newCard->getInstancia() != NULL);
 }
-Cartao *CartaoInterface::getCartao()
+Cartao *CartaoRepository::getCartao()
 {
 
     Cartao *novoCartao(NULL);
@@ -112,7 +112,7 @@ Cartao *CartaoInterface::getCartao()
     }
     return novoCartao;
 }
-void CartaoInterface::get()
+void CartaoRepository::get()
 {
     char const *sqlQuery = "select * from CARTAO";
     char *zErrMsg = 0;
@@ -129,7 +129,7 @@ void CartaoInterface::get()
         cout << "Operação bem sucedida." << endl;
     }
 }
-void CartaoInterface::remove()
+void CartaoRepository::remove()
 {
     string id = getIDtoRemove();
     int result = 0;
@@ -151,7 +151,7 @@ void CartaoInterface::remove()
         cout << "Cartao Removido com sucesso!" << endl;
     }
 }
-void CartaoInterface::update()
+void CartaoRepository::update()
 {
     string id = getIDtoUpdate();
     int option = getFieldToUpdate();
@@ -236,7 +236,7 @@ void CartaoInterface::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void CartaoInterface::gerenciar()
+void CartaoRepository::gerenciar()
 {
     int operacao;
     do
@@ -262,7 +262,7 @@ void CartaoInterface::gerenciar()
     } while (operacao >= 1 && operacao <= 4);
 }
 
-int CartaoInterface::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int CartaoRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -273,7 +273,7 @@ int CartaoInterface::callback(void *NotUsed, int argc, char **argv, char **azCol
     return 0;
 }
 
-string CartaoInterface::getIDtoRemove()
+string CartaoRepository::getIDtoRemove()
 {
     string id;
     cout << "Digite o ID do Cartao a ser removido:";
@@ -282,7 +282,7 @@ string CartaoInterface::getIDtoRemove()
     return id;
 }
 
-string CartaoInterface::getIDtoUpdate()
+string CartaoRepository::getIDtoUpdate()
 {
     string id;
     cout << "Digite o ID do Cartao a ser editado:";
@@ -291,7 +291,7 @@ string CartaoInterface::getIDtoUpdate()
     return id;
 }
 
-int CartaoInterface::getFieldToUpdate()
+int CartaoRepository::getFieldToUpdate()
 {
     int operacao = -1;
     do

@@ -1,12 +1,12 @@
-#include "../../include/usuarioInterface.hpp"
-#include "../../include/gerenciarInterface.hpp"
+#include "../../include/usuarioRepository.hpp"
+#include "../../include/gerenciarRepository.hpp"
 #include <iostream>
 #include <string.h>
 #include <sstream>
 
 using namespace std;
 
-UsuarioInterface::UsuarioInterface(sqlite3 *db) : Interface(db)
+UsuarioRepository::UsuarioRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
     if (tableCreation)
@@ -20,11 +20,11 @@ UsuarioInterface::UsuarioInterface(sqlite3 *db) : Interface(db)
     }
 }
 
-UsuarioInterface::~UsuarioInterface()
+UsuarioRepository::~UsuarioRepository()
 {
 }
 
-bool UsuarioInterface::createTable()
+bool UsuarioRepository::createTable()
 {
 
     char *zErrMsg = 0;
@@ -39,7 +39,7 @@ bool UsuarioInterface::createTable()
         return true;
     }
 }
-void UsuarioInterface::add()
+void UsuarioRepository::add()
 {
     Usuario *newUser = this->getUsuario();
     stringstream query;
@@ -68,7 +68,7 @@ void UsuarioInterface::add()
         }
     }
 }
-Usuario *UsuarioInterface::getUsuario()
+Usuario *UsuarioRepository::getUsuario()
 {
     Usuario *novoUsuario = new Usuario();
     do
@@ -93,7 +93,7 @@ Usuario *UsuarioInterface::getUsuario()
 
     return novoUsuario;
 }
-void UsuarioInterface::get()
+void UsuarioRepository::get()
 {
     char const *sqlQuery = "select * from USUARIO";
     char *zErrMsg = 0;
@@ -110,7 +110,7 @@ void UsuarioInterface::get()
         cout << "Opreação bem sucedida." << endl;
     }
 }
-void UsuarioInterface::remove()
+void UsuarioRepository::remove()
 {
     string cpf = getCPFtoRemove();
     int result = 0;
@@ -132,7 +132,7 @@ void UsuarioInterface::remove()
         cout << "Usuário Removido com sucesso!" << endl;
     }
 }
-void UsuarioInterface::update()
+void UsuarioRepository::update()
 {
     string cpf = getCPFtoUpdate();
     int option = getFieldToUpdate();
@@ -191,7 +191,7 @@ void UsuarioInterface::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void UsuarioInterface::gerenciar()
+void UsuarioRepository::gerenciar()
 {
     int operacao;
     do
@@ -217,7 +217,7 @@ void UsuarioInterface::gerenciar()
     } while (operacao >= 1 && operacao <= 4);
 }
 
-int UsuarioInterface::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int UsuarioRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -228,7 +228,7 @@ int UsuarioInterface::callback(void *NotUsed, int argc, char **argv, char **azCo
     return 0;
 }
 
-string UsuarioInterface::getCPFtoRemove()
+string UsuarioRepository::getCPFtoRemove()
 {
     string cpf;
     cout << "Digite o CPF do Usuario a ser removido:";
@@ -237,7 +237,7 @@ string UsuarioInterface::getCPFtoRemove()
     return cpf;
 }
 
-string UsuarioInterface::getCPFtoUpdate()
+string UsuarioRepository::getCPFtoUpdate()
 {
     string cpf;
     cout << "Digite o CPF do Usuario a ser editado:";
@@ -246,7 +246,7 @@ string UsuarioInterface::getCPFtoUpdate()
     return cpf;
 }
 
-int UsuarioInterface::getFieldToUpdate()
+int UsuarioRepository::getFieldToUpdate()
 {
     int operacao = -1;
     do

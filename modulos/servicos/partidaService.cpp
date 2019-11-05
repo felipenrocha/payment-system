@@ -1,12 +1,12 @@
-#include "../../include/partidaInterface.hpp"
-#include "../../include/gerenciarInterface.hpp"
+#include "../../include/partidaRepository.hpp"
+#include "../../include/gerenciarRepository.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
 
 using namespace std;
 
-PartidaInterface::PartidaInterface(sqlite3 *db) : Interface(db)
+PartidaRepository::PartidaRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
     if (tableCreation)
@@ -20,11 +20,11 @@ PartidaInterface::PartidaInterface(sqlite3 *db) : Interface(db)
     }
 }
 
-PartidaInterface::~PartidaInterface()
+PartidaRepository::~PartidaRepository()
 {
 }
 
-bool PartidaInterface::createTable()
+bool PartidaRepository::createTable()
 {
 
     char *zErrMsg = 0;
@@ -46,7 +46,7 @@ bool PartidaInterface::createTable()
         return true;
     }
 }
-void PartidaInterface::add()
+void PartidaRepository::add()
 {
     Partida *newGame = this->getPartida();
     stringstream query;
@@ -78,7 +78,7 @@ void PartidaInterface::add()
         }
     }
 }
-Partida *PartidaInterface::getPartida()
+Partida *PartidaRepository::getPartida()
 {
     Partida *novoPartida = NULL;
     do
@@ -113,7 +113,7 @@ Partida *PartidaInterface::getPartida()
 
     return novoPartida;
 }
-void PartidaInterface::get()
+void PartidaRepository::get()
 {
     char const *sqlQuery = "select * from PARTIDA";
     char *zErrMsg = 0;
@@ -126,7 +126,7 @@ void PartidaInterface::get()
         sqlite3_free(zErrMsg);
     }
 }
-void PartidaInterface::remove()
+void PartidaRepository::remove()
 {
     string numero = getNumerotoRemove();
     int result = 0;
@@ -148,7 +148,7 @@ void PartidaInterface::remove()
         cout << "Partida Removido com sucesso!" << endl;
     }
 }
-void PartidaInterface::update()
+void PartidaRepository::update()
 {
     string numero = getNumerotoUpdate();
     int option = getFieldToUpdate();
@@ -283,7 +283,7 @@ void PartidaInterface::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void PartidaInterface::gerenciar()
+void PartidaRepository::gerenciar()
 {
     int operacao;
     do
@@ -309,7 +309,7 @@ void PartidaInterface::gerenciar()
     } while (operacao >= 1 && operacao <= 4);
 }
 
-int PartidaInterface::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int PartidaRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -320,7 +320,7 @@ int PartidaInterface::callback(void *NotUsed, int argc, char **argv, char **azCo
     return 0;
 }
 
-string PartidaInterface::getNumerotoRemove()
+string PartidaRepository::getNumerotoRemove()
 {
     string numero;
     cout << "Digite o Numero da Sala a ser removido: ";
@@ -329,7 +329,7 @@ string PartidaInterface::getNumerotoRemove()
     return numero;
 }
 
-string PartidaInterface::getNumerotoUpdate()
+string PartidaRepository::getNumerotoUpdate()
 {
     string numero;
     cout << "Digite o Numero da Sala a ser editado: ";
@@ -338,7 +338,7 @@ string PartidaInterface::getNumerotoUpdate()
     return numero;
 }
 
-int PartidaInterface::getFieldToUpdate()
+int PartidaRepository::getFieldToUpdate()
 {
     int operacao = -1;
     do

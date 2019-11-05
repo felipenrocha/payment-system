@@ -1,12 +1,12 @@
-#include "../../include/ingressoInterface.hpp"
-#include "../../include/gerenciarInterface.hpp"
+#include "../../include/ingressoRepository.hpp"
+#include "../../include/gerenciarRepository.hpp"
 #include <iostream>
 #include <string.h>
 #include <sstream>
 
 using namespace std;
 
-IngressoInterface::IngressoInterface(sqlite3 *db) : Interface(db)
+IngressoRepository::IngressoRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
     if (tableCreation)
@@ -20,11 +20,11 @@ IngressoInterface::IngressoInterface(sqlite3 *db) : Interface(db)
     }
 }
 
-IngressoInterface::~IngressoInterface()
+IngressoRepository::~IngressoRepository()
 {
 }
 
-bool IngressoInterface::createTable()
+bool IngressoRepository::createTable()
 {
 
     char *zErrMsg = 0;
@@ -39,7 +39,7 @@ bool IngressoInterface::createTable()
         return true;
     }
 }
-void IngressoInterface::add()
+void IngressoRepository::add()
 {
     Ingresso *newTicket(NULL);
     stringstream query;
@@ -83,7 +83,7 @@ void IngressoInterface::add()
 
     while (!newTicket);
 }
-Ingresso *IngressoInterface::getIngresso()
+Ingresso *IngressoRepository::getIngresso()
 {
     Ingresso *novoIngresso = new Ingresso();
     do
@@ -105,7 +105,7 @@ Ingresso *IngressoInterface::getIngresso()
 
     return novoIngresso;
 }
-void IngressoInterface::get()
+void IngressoRepository::get()
 {
     char const *sqlQuery = "select * from INGRESSO";
     char *zErrMsg = 0;
@@ -122,7 +122,7 @@ void IngressoInterface::get()
         cout << "Opreação bem sucedida." << endl;
     }
 }
-void IngressoInterface::remove()
+void IngressoRepository::remove()
 {
     string codigo = getCodigotoRemove();
     int result = 0;
@@ -144,7 +144,7 @@ void IngressoInterface::remove()
         cout << "Ingresso Removido com sucesso!" << endl;
     }
 }
-void IngressoInterface::update()
+void IngressoRepository::update()
 {
     string codigo = getCodigotoUpdate();
     int option = getFieldToUpdate();
@@ -178,7 +178,7 @@ void IngressoInterface::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void IngressoInterface::gerenciar()
+void IngressoRepository::gerenciar()
 {
     int operacao;
     do
@@ -204,7 +204,7 @@ void IngressoInterface::gerenciar()
     } while (operacao >= 1 && operacao <= 4);
 }
 
-int IngressoInterface::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int IngressoRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -215,7 +215,7 @@ int IngressoInterface::callback(void *NotUsed, int argc, char **argv, char **azC
     return 0;
 }
 
-string IngressoInterface::getCodigotoRemove()
+string IngressoRepository::getCodigotoRemove()
 {
     string codigo;
     cout << "Digite o Código do Ingresso a ser removido:";
@@ -224,7 +224,7 @@ string IngressoInterface::getCodigotoRemove()
     return codigo;
 }
 
-string IngressoInterface::getCodigotoUpdate()
+string IngressoRepository::getCodigotoUpdate()
 {
     string codigo;
     cout << "Digite o Código do Ingresso a ser editado:";
@@ -233,7 +233,7 @@ string IngressoInterface::getCodigotoUpdate()
     return codigo;
 }
 
-int IngressoInterface::getFieldToUpdate()
+int IngressoRepository::getFieldToUpdate()
 {
     int operacao = -1;
     do

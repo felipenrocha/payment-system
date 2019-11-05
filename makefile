@@ -14,16 +14,16 @@ Ingresso = teste_ingresso testes/teste_ingresso.cpp
 Jogo = teste_jogo testes/teste_jogo.cpp
 Main = main main.cpp
 Menu = modulos/apresentacao/menu.cpp
-UsuarioInterface = modulos/servicos/usuarioService.cpp
-AutenticacaoInterface = modulos/servicos/autenticacaoService.cpp
+UsuarioRepository = modulos/servicos/usuarioService.cpp
+AutenticacaoRepository = modulos/servicos/autenticacaoService.cpp
 Singleton = modulos/servicos/singleton.cpp
 
 
 main:
 	$(CC) -c $(Menu)
 	$(CC) -c $(Singleton)
-	$(CC) -c $(UsuarioInterface)
-	$(CC) -c $(AutenticacaoInterface)
+	$(CC) -c $(UsuarioRepository)
+	$(CC) -c $(AutenticacaoRepository)
 	$(CC) -o $(Main) $(LIBS) menu.o usuarioService.o autenticacaoService.o singleton.o
 	./main
 testeUsuario:

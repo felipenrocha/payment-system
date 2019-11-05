@@ -5,7 +5,7 @@
 #include <ctype.h>
 #include "index.hpp"
 
-// TODO: FIX BUG usuarioInterface-> não esta sendo referenciada como tipo.
+// TODO: FIX BUG usuarioRepository-> não esta sendo referenciada como tipo.
 using namespace std;
 
 class Menu
@@ -17,7 +17,7 @@ public:
     void registrar();
     // ~Menu();
     void telaInicial();
-    void gerenciarInterfaces();
+    void gerenciarRepositorys();
 };
 
 #endif

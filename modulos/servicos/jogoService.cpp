@@ -1,5 +1,5 @@
-#include "../../include/jogoInterface.hpp"
-#include "../../include/gerenciarInterface.hpp"
+#include "../../include/jogoRepository.hpp"
+#include "../../include/gerenciarRepository.hpp"
 #include <iostream>
 // #include <string.h>
 #include <string>
@@ -10,7 +10,7 @@ static list<string> estados = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "
 ;
 using namespace std;
 
-JogoInterface::JogoInterface(sqlite3 *db) : Interface(db)
+JogoRepository::JogoRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
     if (tableCreation)
@@ -24,11 +24,11 @@ JogoInterface::JogoInterface(sqlite3 *db) : Interface(db)
     }
 }
 
-JogoInterface::~JogoInterface()
+JogoRepository::~JogoRepository()
 {
 }
 
-bool JogoInterface::createTable()
+bool JogoRepository::createTable()
 {
 
     char *zErrMsg = 0;
@@ -50,7 +50,7 @@ bool JogoInterface::createTable()
         return true;
     }
 }
-void JogoInterface::add()
+void JogoRepository::add()
 {
     Jogo *newGame = this->getJogo();
     stringstream query;
@@ -82,7 +82,7 @@ void JogoInterface::add()
         }
     }
 }
-Jogo *JogoInterface::getJogo()
+Jogo *JogoRepository::getJogo()
 {
     Jogo *novoJogo = new Jogo();
     do
@@ -120,7 +120,7 @@ Jogo *JogoInterface::getJogo()
 
     return novoJogo;
 }
-void JogoInterface::get()
+void JogoRepository::get()
 {
     char const *sqlQuery = "select * from JOGO";
     char *zErrMsg = 0;
@@ -133,7 +133,7 @@ void JogoInterface::get()
         sqlite3_free(zErrMsg);
     }
 }
-void JogoInterface::remove()
+void JogoRepository::remove()
 {
     string codigo = getCodigotoRemove();
     int result = 0;
@@ -155,7 +155,7 @@ void JogoInterface::remove()
         cout << "Jogo Removido com sucesso!" << endl;
     }
 }
-void JogoInterface::update()
+void JogoRepository::update()
 {
     string codigo = getCodigotoUpdate();
     int option = getFieldToUpdate();
@@ -322,7 +322,7 @@ void JogoInterface::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void JogoInterface::gerenciar()
+void JogoRepository::gerenciar()
 {
     int operacao;
     do
@@ -348,7 +348,7 @@ void JogoInterface::gerenciar()
     } while (operacao >= 1 && operacao <= 4);
 }
 
-int JogoInterface::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int JogoRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -359,7 +359,7 @@ int JogoInterface::callback(void *NotUsed, int argc, char **argv, char **azColNa
     return 0;
 }
 
-string JogoInterface::getCodigotoRemove()
+string JogoRepository::getCodigotoRemove()
 {
     string codigo;
     cout << "Digite o Codigo do Jogo a ser removido: ";
@@ -368,7 +368,7 @@ string JogoInterface::getCodigotoRemove()
     return codigo;
 }
 
-string JogoInterface::getCodigotoUpdate()
+string JogoRepository::getCodigotoUpdate()
 {
     string codigo;
     cout << "Digite o Codigo do Jogo a ser editado: ";
@@ -377,7 +377,7 @@ string JogoInterface::getCodigotoUpdate()
     return codigo;
 }
 
-int JogoInterface::getFieldToUpdate()
+int JogoRepository::getFieldToUpdate()
 {
     int operacao = -1;
     do
@@ -395,7 +395,7 @@ int JogoInterface::getFieldToUpdate()
     } while (operacao <= 1 || operacao >= 6);
 }
 
-void JogoInterface::printStates()
+void JogoRepository::printStates()
 {
     for (auto const &i : estados)
     {
@@ -403,7 +403,7 @@ void JogoInterface::printStates()
     }
     cout << endl;
 }
-void JogoInterface::printTipos()
+void JogoRepository::printTipos()
 {
     cout << "1) Local" << endl
          << "2) Estadual" << endl

@@ -1,6 +1,6 @@
-#include "../../include/autenticacaoInterface.hpp"
+#include "../../include/autenticacaoRepository.hpp"
 
-AutenticacaoInterface::AutenticacaoInterface(int option)
+AutenticacaoRepository::AutenticacaoRepository(int option)
 {
     this->instancia = this->getInstancia();
     switch (option)
@@ -15,15 +15,15 @@ AutenticacaoInterface::AutenticacaoInterface(int option)
         break;
     }
 }
-AutenticacaoInterface::~AutenticacaoInterface()
+AutenticacaoRepository::~AutenticacaoRepository()
 {
 }
-void AutenticacaoInterface::login()
+void AutenticacaoRepository::login()
 {
     cout << "login sucedido" << endl;
 }
 
-void AutenticacaoInterface::registrar()
+void AutenticacaoRepository::registrar()
 {
     cout << "register sucedido" << endl;
 }

@@ -5,7 +5,7 @@ Menu::Menu(sqlite3 *db)
 
     this->db = db;
     // this->telaInicial();
-    this->gerenciarInterfaces();
+    this->gerenciarRepositorys();
 }
 
 void Menu::telaInicial()
@@ -26,16 +26,16 @@ void Menu::telaInicial()
 
     // } while (input != 1 && input != 2 && input != 3);
 
-    // AutenticacaoInterface *autenticacaoInterface = new AutenticacaoInterface(input);
+    // AutenticacaoRepository *autenticacaoRepository = new AutenticacaoRepository(input);
 }
 
-void Menu::gerenciarInterfaces()
+void Menu::gerenciarRepositorys()
 {
-    UsuarioInterface *usuarioInterface(NULL);
-    JogoInterface *jogoInterface(NULL);
-    PartidaInterface *partidaInterface(NULL);
-    IngressoInterface *ingressoInterface(NULL);
-    CartaoInterface *cartaoInterface(NULL);
+    UsuarioRepository *usuarioRepository(NULL);
+    JogoRepository *jogoRepository(NULL);
+    PartidaRepository *partidaRepository(NULL);
+    IngressoRepository *ingressoRepository(NULL);
+    CartaoRepository *cartaoRepository(NULL);
     int input = -1;
     do
     {
@@ -56,19 +56,19 @@ void Menu::gerenciarInterfaces()
     switch (input)
     {
     case 1:
-        usuarioInterface = new UsuarioInterface(this->db);
+        usuarioRepository = new UsuarioRepository(this->db);
         break;
     case 2:
-        cartaoInterface = new CartaoInterface(this->db);
+        cartaoRepository = new CartaoRepository(this->db);
         break;
     case 3:
-        ingressoInterface = new IngressoInterface(this->db);
+        ingressoRepository = new IngressoRepository(this->db);
         break;
     case 4:
-        partidaInterface = new PartidaInterface(this->db);
+        partidaRepository = new PartidaRepository(this->db);
         break;
     case 5:
-        jogoInterface = new JogoInterface(this->db);
+        jogoRepository = new JogoRepository(this->db);
         break;
     default:
         break;
