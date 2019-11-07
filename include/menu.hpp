@@ -12,12 +12,12 @@ class Menu
 {
 public:
     sqlite3 *db;
-    Menu(sqlite3 * db);
+    Menu(sqlite3 *db);
     void login();
     void registrar();
     // ~Menu();
     void telaInicial();
-    void gerenciarRepositorys();
+    void gerenciarInterfaces();
 };
 
 #endif

@@ -1,5 +1,6 @@
 #include "../../include/cartaoRepository.hpp"
-#include "../../include/gerenciarRepository.hpp"
+#include "../../include/gerenciarInterface.hpp"
+#include "../../include/apresentacaoCartao.hpp"
 #include <iostream>
 #include <string.h>
 #include <sstream>
@@ -9,12 +10,7 @@ using namespace std;
 CartaoRepository::CartaoRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
-    if (tableCreation)
-    {
-        // cout << "Tabela Criada com sucesso!" << endl;
-        this->gerenciar();
-    }
-    else
+    if (!tableCreation)
     {
         cout << ("Tabela não foi criada.");
     }
@@ -131,7 +127,9 @@ void CartaoRepository::get()
 }
 void CartaoRepository::remove()
 {
-    string id = getIDtoRemove();
+
+    ApresentacaoCartao *apresentacaoCartao = new ApresentacaoCartao();
+    string id = apresentacaoCartao->getIdtoRemove();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -153,8 +151,9 @@ void CartaoRepository::remove()
 }
 void CartaoRepository::update()
 {
-    string id = getIDtoUpdate();
-    int option = getFieldToUpdate();
+    ApresentacaoCartao *apresentacaoCartao = new ApresentacaoCartao();
+    string id = apresentacaoCartao->getIdtoUpdate();
+    int option = apresentacaoCartao->getFieldToUpdate();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -236,31 +235,6 @@ void CartaoRepository::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void CartaoRepository::gerenciar()
-{
-    int operacao;
-    do
-    {
-        operacao = printMenuGerenciar("Cartao");
-        switch (operacao)
-        {
-        case 1:
-            this->get();
-            break;
-        case 2:
-            this->add();
-            break;
-        case 3:
-            this->remove();
-            break;
-        case 4:
-            this->update();
-            break;
-        default:
-            break;
-        }
-    } while (operacao >= 1 && operacao <= 4);
-}
 
 int CartaoRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
@@ -271,38 +245,4 @@ int CartaoRepository::callback(void *NotUsed, int argc, char **argv, char **azCo
     }
     printf("\n");
     return 0;
-}
-
-string CartaoRepository::getIDtoRemove()
-{
-    string id;
-    cout << "Digite o ID do Cartao a ser removido:";
-    cin >> id;
-
-    return id;
-}
-
-string CartaoRepository::getIDtoUpdate()
-{
-    string id;
-    cout << "Digite o ID do Cartao a ser editado:";
-    cin >> id;
-
-    return id;
-}
-
-int CartaoRepository::getFieldToUpdate()
-{
-    int operacao = -1;
-    do
-    {
-        cout << "Selecione uma opção para editar: "
-             << endl
-             << "1) Editar Numero " << endl
-             << "2) Editar Codigo " << endl
-             << "3) Editar Data de Validade " << endl;
-        cin >> operacao;
-
-    } while (operacao < 1 || operacao > 3);
-    return operacao;
 }

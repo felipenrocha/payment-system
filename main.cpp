@@ -5,7 +5,7 @@
 int main(int argc, const char **argv)
 {
     // Pointer to SQLite connection
-    sqlite3* db;
+    sqlite3 *db;
     // Save the connection result
     int exit = 0;
     exit = sqlite3_open("sqlite3/SGVI_API", &db);
@@ -18,10 +18,10 @@ int main(int argc, const char **argv)
     }
     else
     {
-        
+        Menu menu(db);
+
         // cout << "Opened Database Successfully!" << endl;
     }
-    Menu menu(db);
 
     return 0;
 }

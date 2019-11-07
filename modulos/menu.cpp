@@ -1,11 +1,11 @@
 #include "../include/index.hpp"
-
+#include "../include/menu.hpp"
 Menu::Menu(sqlite3 *db)
 {
 
     this->db = db;
     // this->telaInicial();
-    this->gerenciarRepositorys();
+    this->gerenciarInterfaces();
 }
 
 void Menu::telaInicial()
@@ -29,13 +29,13 @@ void Menu::telaInicial()
     // AutenticacaoRepository *autenticacaoRepository = new AutenticacaoRepository(input);
 }
 
-void Menu::gerenciarRepositorys()
+void Menu::gerenciarInterfaces()
 {
     UsuarioInterface *usuarioInterface(NULL);
     JogoInterface *jogoInterface(NULL);
     PartidaInterface *partidaInterface(NULL);
     // IngressoRepository *ingressoRepository(NULL);
-    // CartaoRepository *cartaoRepository(NULL);
+    CartaoInterface *cartaoInterface(NULL);
     int input = -1;
     do
     {
@@ -58,14 +58,14 @@ void Menu::gerenciarRepositorys()
     case 1:
         usuarioInterface = new UsuarioInterface(this->db);
         break;
-    // case 2:
-    //     cartaoRepository = new CartaoRepository(this->db);
-    //     break;
+    case 2:
+        cartaoInterface = new CartaoInterface(this->db);
+        break;
     // case 3:
     //     ingressoRepository = new IngressoRepository(this->db);
     //     break;
     case 4:
-        partidaInterface = new PartidaInterface (this->db);
+        partidaInterface = new PartidaInterface(this->db);
         break;
     case 5:
         jogoInterface = new JogoInterface(this->db);
