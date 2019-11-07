@@ -3,13 +3,14 @@
 #define __INDEX_HPP__
 #include <sqlite3.h>
 #include "menu.hpp"
-#include "repository.hpp"
-#include "usuarioRepository.hpp"
+// #include "repository.hpp"
+// #include "usuarioRepository.hpp"
 #include "singleton.hpp"
-#include "autenticacaoRepository.hpp"
-#include "jogoRepository.hpp"
+// #include "autenticacaoRepository.hpp"
+// #include "jogoRepository.hpp"
 #include "usuarioInterface.hpp"
-#include "ingressoRepository.hpp"
-#include "partidaRepository.hpp"
-#include "cartaoRepository.hpp"
+#include "jogoInterface.hpp"
+// #include "ingressoRepository.hpp"
+// #include "partidaRepository.hpp"
+// #include "cartaoRepository.hpp"
 #endif

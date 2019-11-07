@@ -1,26 +1,19 @@
 #include "../../include/jogoRepository.hpp"
-#include "../../include/gerenciarRepository.hpp"
+#include "../../include/gerenciarInterface.hpp"
+#include "../../include/jogoInterface.hpp"
 #include <iostream>
-// #include <string.h>
+
 #include <string>
 #include <sstream>
-static list<string> estados = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE",
 
-                               "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-;
 using namespace std;
 
 JogoRepository::JogoRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
-    if (tableCreation)
+    if (!tableCreation)
     {
-        // cout << "Tabela Criada com sucesso!" << endl;
-        this->gerenciar();
-    }
-    else
-    {
-        cout << ("Tabela não foi criada");
+        throw invalid_argument("Tabela não foi criada");
     }
 }
 
@@ -84,6 +77,7 @@ void JogoRepository::add()
 }
 Jogo *JogoRepository::getJogo()
 {
+    ApresentacaoJogo *apresentacaoJogo = new ApresentacaoJogo();
     Jogo *novoJogo = new Jogo();
     do
     {
@@ -99,13 +93,13 @@ Jogo *JogoRepository::getJogo()
         cin.ignore();
         getline(std::cin, nomeJogo);
         cout << "Digite o Estado do Jogo: " << endl;
-        this->printStates();
+        apresentacaoJogo->printStates();
         cin >> estado;
         cout << "Digite o nome da Cidade do Jogo: ";
         cin.ignore();
         getline(cin, cidade);
         cout << "Digite o tipo do Jogo: " << endl;
-        this->printTipos();
+        apresentacaoJogo->printTipos();
         cin >> tipo;
         try
         {
@@ -135,11 +129,12 @@ void JogoRepository::get()
 }
 void JogoRepository::remove()
 {
-    string codigo = getCodigotoRemove();
+    ApresentacaoJogo *apresentacaoJogo = new ApresentacaoJogo();
+    string id = apresentacaoJogo->getIdtoRemove();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
-    query << "DELETE FROM JOGO WHERE CODIGO='" << codigo << "';";
+    query << "DELETE FROM JOGO WHERE ID='" << id << "';";
     const char *data = "Callback function called";
     string s = query.str();
     char const *sqlQuery = &s[0];
@@ -157,8 +152,9 @@ void JogoRepository::remove()
 }
 void JogoRepository::update()
 {
-    string codigo = getCodigotoUpdate();
-    int option = getFieldToUpdate();
+    ApresentacaoJogo *apresentacaoJogo = new ApresentacaoJogo();
+    string id = apresentacaoJogo->getIdtoUpdate();
+    int option = apresentacaoJogo->getFieldToUpdate();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -182,7 +178,7 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET CODIGO ='" << newCode << "'WHERE CODIGO = '" << codigo << "'";
+        query << "UPDATE JOGO SET CODIGO ='" << newCode << "'WHERE ID = '" << id << "'";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -208,7 +204,7 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET NOME ='" << newNome << "'WHERE CODIGO = '" << codigo << "';";
+        query << "UPDATE JOGO SET NOME ='" << newNome << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -234,7 +230,7 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET CIDADE ='" << newCity << "'WHERE CODIGO = '" << codigo << "';";
+        query << "UPDATE JOGO SET CIDADE ='" << newCity << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -247,7 +243,7 @@ void JogoRepository::update()
         do
         {
             cout << "Insira a sigla do novo estado: ";
-            this->printStates();
+            apresentacaoJogo->printStates();
 
             cin >> newState;
             try
@@ -261,7 +257,7 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET ESTADO ='" << newState << "'WHERE CODIGO = '" << codigo << "';";
+        query << "UPDATE JOGO SET ESTADO ='" << newState << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -274,7 +270,7 @@ void JogoRepository::update()
         do
         {
             cout << "Insira a sigla do novo estado: ";
-            this->printStates();
+            apresentacaoJogo->printStates();
 
             cin >> newState;
             try
@@ -288,7 +284,7 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET ESTADO ='" << newState << "'WHERE CODIGO = '" << codigo << "';";
+        query << "UPDATE JOGO SET ESTADO ='" << newState << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -301,7 +297,7 @@ void JogoRepository::update()
         do
         {
             cout << "Insira o novo tipo: ";
-            this->printTipos();
+            apresentacaoJogo->printTipos();
 
             cin >> newType;
             try
@@ -315,38 +311,14 @@ void JogoRepository::update()
 
         } while (!jogoBase);
 
-        query << "UPDATE JOGO SET TIPO ='" << newType << "'WHERE CODIGO = '" << codigo << "';";
+        query << "UPDATE JOGO SET TIPO ='" << newType << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void JogoRepository::gerenciar()
-{
-    int operacao;
-    do
-    {
-        operacao = printMenuGerenciar("Jogo");
-        switch (operacao)
-        {
-        case 1:
-            this->get();
-            break;
-        case 2:
-            this->add();
-            break;
-        case 3:
-            this->remove();
-            break;
-        case 4:
-            this->update();
-            break;
-        default:
-            break;
-        }
-    } while (operacao >= 1 && operacao <= 4);
-}
+
 
 int JogoRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
@@ -357,56 +329,4 @@ int JogoRepository::callback(void *NotUsed, int argc, char **argv, char **azColN
     }
     printf("\n");
     return 0;
-}
-
-string JogoRepository::getCodigotoRemove()
-{
-    string codigo;
-    cout << "Digite o Codigo do Jogo a ser removido: ";
-    cin >> codigo;
-
-    return codigo;
-}
-
-string JogoRepository::getCodigotoUpdate()
-{
-    string codigo;
-    cout << "Digite o Codigo do Jogo a ser editado: ";
-    cin >> codigo;
-
-    return codigo;
-}
-
-int JogoRepository::getFieldToUpdate()
-{
-    int operacao = -1;
-    do
-    {
-        cout << "Selecione uma opção para editar: "
-             << endl
-             << "1) Editar Codigo " << endl
-             << "2) Editar Nome " << endl
-             << "3) Editar Cidade " << endl
-             << "4) Editar Estado " << endl
-             << "5) Editar Tipo " << endl
-             << "6) Sair" << endl;
-        cin >> operacao;
-
-    } while (operacao <= 1 || operacao >= 6);
-}
-
-void JogoRepository::printStates()
-{
-    for (auto const &i : estados)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-}
-void JogoRepository::printTipos()
-{
-    cout << "1) Local" << endl
-         << "2) Estadual" << endl
-         << "3) Nacional" << endl
-         << "4) Internacional" << endl;
 }

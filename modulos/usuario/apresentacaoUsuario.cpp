@@ -1,6 +1,5 @@
 #include "../../include/apresentacaoUsuario.hpp"
 
-
 string ApresentacaoUsuario::getIdtoRemove()
 {
     string Id;
@@ -31,4 +30,5 @@ int ApresentacaoUsuario::getFieldToUpdate()
         cin >> operacao;
 
     } while (operacao != 1 && operacao != 2);
+    return operacao;
 }

@@ -1,4 +1,4 @@
-#include "../../include/index.hpp"
+#include "../include/index.hpp"
 
 Menu::Menu(sqlite3 *db)
 {
@@ -32,7 +32,7 @@ void Menu::telaInicial()
 void Menu::gerenciarRepositorys()
 {
     UsuarioInterface *usuarioInterface(NULL);
-    // JogoRepository *jogoRepository(NULL);
+    JogoInterface *jogoInterface(NULL);
     // PartidaRepository *partidaRepository(NULL);
     // IngressoRepository *ingressoRepository(NULL);
     // CartaoRepository *cartaoRepository(NULL);
@@ -55,7 +55,7 @@ void Menu::gerenciarRepositorys()
     } while (input < 1 || input > 5);
     switch (input)
     {
-    case 1: 
+    case 1:
         usuarioInterface = new UsuarioInterface(this->db);
         break;
     // case 2:
@@ -67,9 +67,9 @@ void Menu::gerenciarRepositorys()
     // case 4:
     //     partidaRepository = new PartidaRepository(this->db);
     //     break;
-    // case 5:
-    //     jogoRepository = new JogoRepository(this->db);
-    //     break;
+    case 5:
+        jogoInterface = new JogoInterface(this->db);
+        break;
     default:
         break;
     }
