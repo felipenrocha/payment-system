@@ -2,7 +2,6 @@
 #define __REPOSITORY__
 #include <iostream>
 #include <string>
-#include "singleton.hpp"
 #include <sqlite3.h>
 using namespace std;
 

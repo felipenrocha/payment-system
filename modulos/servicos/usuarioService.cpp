@@ -1,5 +1,6 @@
 #include "../../include/usuarioRepository.hpp"
-#include "../../include/gerenciarRepository.hpp"
+#include "../../include/gerenciarInterface.hpp"
+#include "../../include/usuarioInterface.hpp"
 #include <iostream>
 #include <string.h>
 #include <sstream>
@@ -9,14 +10,14 @@ using namespace std;
 UsuarioRepository::UsuarioRepository(sqlite3 *db) : Repository(db)
 {
     bool tableCreation = this->createTable();
-    if (tableCreation)
+    if (!tableCreation)
     {
-        // cout << "Tabela Criada com sucesso!" << endl;
-        this->gerenciar();
+        throw invalid_argument("Tabela não foi criada");
     }
     else
     {
-        cout << ("Tabela não foi criada");
+        // UsuarioInterface *usuarioInterface = new UsuarioInterface(this->getDB());
+        // usuarioInterface->gerenciar();
     }
 }
 
@@ -41,6 +42,8 @@ bool UsuarioRepository::createTable()
 }
 void UsuarioRepository::add()
 {
+
+
     Usuario *newUser = this->getUsuario();
     stringstream query;
     query << "INSERT INTO USUARIO (ID,CPF,SENHA) VALUES("
@@ -68,31 +71,7 @@ void UsuarioRepository::add()
         }
     }
 }
-Usuario *UsuarioRepository::getUsuario()
-{
-    Usuario *novoUsuario = new Usuario();
-    do
-    {
-        string cpf;
-        string senha;
 
-        cout << "Digite o CPF: ";
-        cin >> cpf;
-        cout << "Digite a Senha: ";
-        cin >> senha;
-        try
-        {
-            novoUsuario = new Usuario(cpf, senha);
-        }
-        catch (invalid_argument e)
-        {
-            cout << e.what() << endl;
-        }
-
-    } while (novoUsuario->getId() == NULL);
-
-    return novoUsuario;
-}
 void UsuarioRepository::get()
 {
     char const *sqlQuery = "select * from USUARIO";
@@ -112,11 +91,12 @@ void UsuarioRepository::get()
 }
 void UsuarioRepository::remove()
 {
-    string cpf = getCPFtoRemove();
+    ApresentacaoUsuario *apresentacaoUsuario = new ApresentacaoUsuario();
+    string id = apresentacaoUsuario->getIdtoRemove();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
-    query << "DELETE FROM USUARIO WHERE CPF='" << cpf << "';";
+    query << "DELETE FROM USUARIO WHERE ID='" << id << "';";
     const char *data = "Callback function called";
     string s = query.str();
     char const *sqlQuery = &s[0];
@@ -134,8 +114,9 @@ void UsuarioRepository::remove()
 }
 void UsuarioRepository::update()
 {
-    string cpf = getCPFtoUpdate();
-    int option = getFieldToUpdate();
+    ApresentacaoUsuario *apresentacaoUsuario = new ApresentacaoUsuario();
+    string id = apresentacaoUsuario->getIdtoRemove();
+    int option = apresentacaoUsuario->getFieldToUpdate();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -159,7 +140,7 @@ void UsuarioRepository::update()
 
         } while (!usuarioBase);
 
-        query << "UPDATE USUARIO SET CPF ='" << newCpf << "'WHERE CPF = '" << cpf << "';";
+        query << "UPDATE USUARIO SET CPF ='" << newCpf << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -184,37 +165,12 @@ void UsuarioRepository::update()
 
         } while (!usuarioBase);
 
-        query << "UPDATE USUARIO SET SENHA ='" << newPassword << "'WHERE CPF = '" << cpf << "'";
+        query << "UPDATE USUARIO SET SENHA ='" << newPassword << "'WHERE ID = '" << id << "'";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
-}
-void UsuarioRepository::gerenciar()
-{
-    int operacao;
-    do
-    {
-        operacao = printMenuGerenciar("Usuario");
-        switch (operacao)
-        {
-        case 1:
-            this->get();
-            break;
-        case 2:
-            this->add();
-            break;
-        case 3:
-            this->remove();
-            break;
-        case 4:
-            this->update();
-            break;
-        default:
-            break;
-        }
-    } while (operacao >= 1 && operacao <= 4);
 }
 
 int UsuarioRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
@@ -227,35 +183,28 @@ int UsuarioRepository::callback(void *NotUsed, int argc, char **argv, char **azC
     printf("\n");
     return 0;
 }
-
-string UsuarioRepository::getCPFtoRemove()
+Usuario *UsuarioRepository::getUsuario()
 {
-    string cpf;
-    cout << "Digite o CPF do Usuario a ser removido:";
-    cin >> cpf;
-
-    return cpf;
-}
-
-string UsuarioRepository::getCPFtoUpdate()
-{
-    string cpf;
-    cout << "Digite o CPF do Usuario a ser editado:";
-    cin >> cpf;
-
-    return cpf;
-}
-
-int UsuarioRepository::getFieldToUpdate()
-{
-    int operacao = -1;
+    Usuario *novoUsuario = new Usuario();
     do
     {
-        cout << "Selecione uma opção para editar: "
-             << endl
-             << "1) Editar CPF " << endl
-             << "2) Editar Senha" << endl;
-        cin >> operacao;
+        string cpf;
+        string senha;
 
-    } while (operacao != 1 && operacao != 2);
+        cout << "Digite o CPF: ";
+        cin >> cpf;
+        cout << "Digite a Senha: ";
+        cin >> senha;
+        try
+        {
+            novoUsuario = new Usuario(cpf, senha);
+        }
+        catch (invalid_argument e)
+        {
+            cout << e.what() << endl;
+        }
+
+    } while (novoUsuario->getId() == NULL);
+
+    return novoUsuario;
 }

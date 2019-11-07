@@ -1,4 +1,4 @@
-#include "../../include/gerenciarRepository.hpp"
+#include "../../include/gerenciarInterface.hpp"
 int printMenuGerenciar(string repository)
 {
     int input = -1;

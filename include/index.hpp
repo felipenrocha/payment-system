@@ -8,6 +8,7 @@
 #include "singleton.hpp"
 #include "autenticacaoRepository.hpp"
 #include "jogoRepository.hpp"
+#include "usuarioInterface.hpp"
 #include "ingressoRepository.hpp"
 #include "partidaRepository.hpp"
 #include "cartaoRepository.hpp"

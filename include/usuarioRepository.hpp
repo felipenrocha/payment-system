@@ -5,24 +5,16 @@
 
 class UsuarioRepository : public Repository
 {
-private:
+public:
+    UsuarioRepository(sqlite3 *db);
+    ~UsuarioRepository();
     void remove();
     void update();
     void add();
     void get();
     bool createTable();
-    static int callback(void *NotUsed, int argc, char **argv, char **azColName);
-    string getCPFtoRemove();
-    int getFieldToUpdate();
-    string getCPFtoUpdate();
-
-public:
     Usuario *getUsuario();
-    void removerUsuario();
-    void editarUsuario();
-    void gerenciar();
-    UsuarioRepository(sqlite3 *db);
-    ~UsuarioRepository();
+    static int callback(void *NotUsed, int argc, char **argv, char **azColName);
 };
 
 #endif

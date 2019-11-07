@@ -31,11 +31,11 @@ void Menu::telaInicial()
 
 void Menu::gerenciarRepositorys()
 {
-    UsuarioRepository *usuarioRepository(NULL);
-    JogoRepository *jogoRepository(NULL);
-    PartidaRepository *partidaRepository(NULL);
-    IngressoRepository *ingressoRepository(NULL);
-    CartaoRepository *cartaoRepository(NULL);
+    UsuarioInterface *usuarioInterface(NULL);
+    // JogoRepository *jogoRepository(NULL);
+    // PartidaRepository *partidaRepository(NULL);
+    // IngressoRepository *ingressoRepository(NULL);
+    // CartaoRepository *cartaoRepository(NULL);
     int input = -1;
     do
     {
@@ -55,21 +55,21 @@ void Menu::gerenciarRepositorys()
     } while (input < 1 || input > 5);
     switch (input)
     {
-    case 1:
-        usuarioRepository = new UsuarioRepository(this->db);
+    case 1: 
+        usuarioInterface = new UsuarioInterface(this->db);
         break;
-    case 2:
-        cartaoRepository = new CartaoRepository(this->db);
-        break;
-    case 3:
-        ingressoRepository = new IngressoRepository(this->db);
-        break;
-    case 4:
-        partidaRepository = new PartidaRepository(this->db);
-        break;
-    case 5:
-        jogoRepository = new JogoRepository(this->db);
-        break;
+    // case 2:
+    //     cartaoRepository = new CartaoRepository(this->db);
+    //     break;
+    // case 3:
+    //     ingressoRepository = new IngressoRepository(this->db);
+    //     break;
+    // case 4:
+    //     partidaRepository = new PartidaRepository(this->db);
+    //     break;
+    // case 5:
+    //     jogoRepository = new JogoRepository(this->db);
+    //     break;
     default:
         break;
     }
