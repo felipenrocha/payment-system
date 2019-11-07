@@ -10,6 +10,7 @@
 // #include "jogoRepository.hpp"
 #include "usuarioInterface.hpp"
 #include "jogoInterface.hpp"
+#include "partidaInterface.hpp"
 // #include "ingressoRepository.hpp"
 // #include "partidaRepository.hpp"
 // #include "cartaoRepository.hpp"

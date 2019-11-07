@@ -1,6 +1,5 @@
 #include "../../include/apresentacaoPartida.hpp"
 
-
 string ApresentacaoPartida::getIdtoRemove()
 {
     string id;
@@ -29,10 +28,10 @@ int ApresentacaoPartida::getFieldToUpdate()
              << "1) Editar Id " << endl
              << "2) Editar Data " << endl
              << "3) Editar Preco " << endl
-             << "4) Editar HORARIO " << endl
+             << "4) Editar Horário " << endl
              << "5) Editar Disponibilidade " << endl
              << "6) Sair" << endl;
         cin >> operacao;
 
-    } while (operacao <= 1 || operacao >= 6);
+    } while (operacao <= 1 && operacao >= 6);
 }

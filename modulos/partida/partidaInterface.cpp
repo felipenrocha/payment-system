@@ -33,6 +33,6 @@ void PartidaInterface::gerenciar()
         default:
             break;
         }
-    } while (operacao >= 1 && operacao <= 4);
+    } while (operacao >= 1 || operacao <= 4);
 }
 

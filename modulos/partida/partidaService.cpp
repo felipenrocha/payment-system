@@ -1,4 +1,4 @@
-#include "../../include/partidaRepository.hpp"
+#include "../../include/partidaInterface.hpp"
 #include "../../include/gerenciarInterface.hpp"
 #include <iostream>
 #include <string>
@@ -12,7 +12,7 @@ PartidaRepository::PartidaRepository(sqlite3 *db) : Repository(db)
     if (tableCreation)
     {
         // cout << "Tabela Criada com sucesso!" << endl;
-        this->gerenciar();
+        // this->gerenciar();
     }
     else
     {
@@ -128,7 +128,10 @@ void PartidaRepository::get()
 }
 void PartidaRepository::remove()
 {
-    string id = getNumerotoRemove();
+
+    ApresentacaoPartida *apresentacaoPartida = new ApresentacaoPartida();
+
+    string id = apresentacaoPartida->getIdtoRemove();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -150,8 +153,10 @@ void PartidaRepository::remove()
 }
 void PartidaRepository::update()
 {
-    string numero = getNumerotoUpdate();
-    int option = getFieldToUpdate();
+    ApresentacaoPartida *apresentacaoPartida = new ApresentacaoPartida();
+
+    string id = apresentacaoPartida->getIdtoUpdate();
+    int option = apresentacaoPartida->getFieldToUpdate();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
@@ -175,7 +180,7 @@ void PartidaRepository::update()
 
         } while (!partidaBase);
 
-        query << "UPDATE PARTIDA SET NUMERO ='" << newNumber << "'WHERE NUMERO = '" << numero << "'";
+        query << "UPDATE PARTIDA SET NUMERO ='" << newNumber << "'WHERE ID = '" << id << "'";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -201,7 +206,7 @@ void PartidaRepository::update()
 
         } while (!partidaBase);
 
-        query << "UPDATE PARTIDA SET DATA ='" << newData << "'WHERE NUMERO = '" << numero << "';";
+        query << "UPDATE PARTIDA SET DATA ='" << newData << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -226,7 +231,7 @@ void PartidaRepository::update()
 
         } while (!partidaBase);
 
-        query << "UPDATE PARTIDA SET PRECO ='" << newPrice << "'WHERE NUMERO = '" << numero << "';";
+        query << "UPDATE PARTIDA SET PRECO ='" << newPrice << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -251,7 +256,7 @@ void PartidaRepository::update()
 
         } while (!partidaBase);
 
-        query << "UPDATE PARTIDA SET HORARIO ='" << newTime << "'WHERE NUMERO = '" << numero << "';";
+        query << "UPDATE PARTIDA SET HORARIO ='" << newTime << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];
@@ -276,7 +281,7 @@ void PartidaRepository::update()
 
         } while (!partidaBase);
 
-        query << "UPDATE PARTIDA SET DISPONIBILIDADE ='" << newDisponibility << "'WHERE NUMERO = '" << numero << "';";
+        query << "UPDATE PARTIDA SET DISPONIBILIDADE ='" << newDisponibility << "'WHERE ID = '" << id << "';";
         const char *data = "Callback function called";
         string s = query.str();
         char const *sqlQuery = &s[0];

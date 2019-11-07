@@ -33,7 +33,7 @@ void Menu::gerenciarRepositorys()
 {
     UsuarioInterface *usuarioInterface(NULL);
     JogoInterface *jogoInterface(NULL);
-    // PartidaRepository *partidaRepository(NULL);
+    PartidaInterface *partidaInterface(NULL);
     // IngressoRepository *ingressoRepository(NULL);
     // CartaoRepository *cartaoRepository(NULL);
     int input = -1;
@@ -64,9 +64,9 @@ void Menu::gerenciarRepositorys()
     // case 3:
     //     ingressoRepository = new IngressoRepository(this->db);
     //     break;
-    // case 4:
-    //     partidaRepository = new PartidaRepository(this->db);
-    //     break;
+    case 4:
+        partidaInterface = new PartidaInterface (this->db);
+        break;
     case 5:
         jogoInterface = new JogoInterface(this->db);
         break;
