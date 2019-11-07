@@ -1,5 +1,5 @@
 #include "../../include/partidaRepository.hpp"
-#include "../../include/gerenciarRepository.hpp"
+#include "../../include/gerenciarInterface.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -128,11 +128,11 @@ void PartidaRepository::get()
 }
 void PartidaRepository::remove()
 {
-    string numero = getNumerotoRemove();
+    string id = getNumerotoRemove();
     int result = 0;
     char *zErrMsg = 0;
     stringstream query;
-    query << "DELETE FROM PARTIDA WHERE NUMERO='" << numero << "';";
+    query << "DELETE FROM PARTIDA WHERE ID='" << id << "';";
     const char *data = "Callback function called";
     string s = query.str();
     char const *sqlQuery = &s[0];
@@ -283,31 +283,6 @@ void PartidaRepository::update()
         result = sqlite3_exec(this->getDB(), sqlQuery, callback, (void *)data, &zErrMsg);
     }
 }
-void PartidaRepository::gerenciar()
-{
-    int operacao;
-    do
-    {
-        operacao = printMenuGerenciar("Partida");
-        switch (operacao)
-        {
-        case 1:
-            this->get();
-            break;
-        case 2:
-            this->add();
-            break;
-        case 3:
-            this->remove();
-            break;
-        case 4:
-            this->update();
-            break;
-        default:
-            break;
-        }
-    } while (operacao >= 1 && operacao <= 4);
-}
 
 int PartidaRepository::callback(void *NotUsed, int argc, char **argv, char **azColName)
 {
@@ -318,40 +293,4 @@ int PartidaRepository::callback(void *NotUsed, int argc, char **argv, char **azC
     }
     printf("\n");
     return 0;
-}
-
-string PartidaRepository::getNumerotoRemove()
-{
-    string numero;
-    cout << "Digite o Numero da Sala a ser removido: ";
-    cin >> numero;
-
-    return numero;
-}
-
-string PartidaRepository::getNumerotoUpdate()
-{
-    string numero;
-    cout << "Digite o Numero da Sala a ser editado: ";
-    cin >> numero;
-
-    return numero;
-}
-
-int PartidaRepository::getFieldToUpdate()
-{
-    int operacao = -1;
-    do
-    {
-        cout << "Selecione uma opção para editar: "
-             << endl
-             << "1) Editar Numero " << endl
-             << "2) Editar Data " << endl
-             << "3) Editar Preco " << endl
-             << "4) Editar HORARIO " << endl
-             << "5) Editar Disponibilidade " << endl
-             << "6) Sair" << endl;
-        cin >> operacao;
-
-    } while (operacao <= 1 || operacao >= 6);
 }
